@@ -1,0 +1,563 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.ppsr.gov.au/2011/04/services" elementFormDefault="qualified" targetNamespace="http://schemas.ppsr.gov.au/2011/04/services" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="schemas.ppsr.gov.au.2011.04.data.xsd" namespace="http://schemas.ppsr.gov.au/2011/04/data" />
+  <xs:element name="CreateRegistrationsRequestMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="CreateRegistrationsRequest" nillable="true" type="q1:CreateRegistrationsRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TargetEnvironment" nillable="true" type="xs:string" />
+  <xs:element name="CreateRegistrationsResponseMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="CreateRegistrationsResponse" nillable="true" type="q2:CreateRegistrationsResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UploadRegistrationAttachmentRequestMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="UploadRegistrationAttachmentRequest" nillable="true" type="q3:UploadRegistrationAttachmentRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UploadRegistrationAttachmentResponseMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="UploadRegistrationAttachmentResponse" nillable="true" type="q4:UploadRegistrationAttachmentResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetrieveRegistrationRequestMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="RetrieveRegistrationRequest" nillable="true" type="q5:RetrieveRegistrationRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetrieveRegistrationResponseMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="RetrieveRegistrationResponse" nillable="true" type="q6:RetrieveRegistrationResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetrieveRegistrationAttachmentRequestMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="RetrieveRegistrationAttachmentRequest" nillable="true" type="q7:RetrieveRegistrationAttachmentRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetrieveRegistrationAttachmentResponseMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="RetrieveRegistrationAttachmentResponse" nillable="true" type="q8:RetrieveRegistrationAttachmentResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AmendRegistrationRequestMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="AmendRegistrationRequest" nillable="true" type="q9:AmendRegistrationRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AmendRegistrationResponseMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="AmendRegistrationResponse" nillable="true" type="q10:AmendRegistrationResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DischargeRegistrationRequestMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="DischargeRegistrationRequest" nillable="true" type="q11:DischargeRegistrationRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DischargeRegistrationResponseMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="DischargeRegistrationResponse" nillable="true" type="q12:DischargeRegistrationResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TransferSingleRegistrationRequestMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="TransferSingleRegistrationRequest" nillable="true" type="q13:TransferSingleRegistrationRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TransferSingleRegistrationResponseMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="TransferSingleRegistrationResponse" nillable="true" type="q14:TransferSingleRegistrationResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TransferAllRegistrationsRequestMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="TransferAllRegistrationsRequest" nillable="true" type="q15:TransferAllRegistrationsRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TransferAllRegistrationsResponseMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="TransferAllRegistrationsResponse" nillable="true" type="q16:TransferAllRegistrationsResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ResetRegistrationTokenRequestMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="ResetRegistrationTokenRequest" nillable="true" type="q17:ResetRegistrationTokenRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ResetRegistrationTokenResponseMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="ResetRegistrationTokenResponse" nillable="true" type="q18:ResetRegistrationTokenResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReissueVerificationStatementRequestMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="ReissueVerificationStatementRequest" nillable="true" type="q19:ReissueVerificationStatementRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReissueVerificationStatementResponseMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="ReissueVerificationStatementResponse" nillable="true" type="q20:ReissueVerificationStatementResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateSecuredPartyGroupRequestMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="CreateSecuredPartyGroupRequest" nillable="true" type="q21:CreateSecuredPartyGroupRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateSecuredPartyGroupResponseMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q22="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="CreateSecuredPartyGroupResponse" nillable="true" type="q22:CreateSecuredPartyGroupResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetrieveSecuredPartyGroupRequestMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q23="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="RetrieveSecuredPartyGroupRequest" nillable="true" type="q23:RetrieveSecuredPartyGroupRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetrieveSecuredPartyGroupResponseMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q24="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="RetrieveSecuredPartyGroupResponse" nillable="true" type="q24:RetrieveSecuredPartyGroupResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetrieveSecuredPartyGroupHistoryRequestMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q25="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="RetrieveSecuredPartyGroupHistoryRequest" nillable="true" type="q25:RetrieveSecuredPartyGroupHistoryRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetrieveSecuredPartyGroupHistoryResponseMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q26="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="RetrieveSecuredPartyGroupHistoryResponse" nillable="true" type="q26:RetrieveSecuredPartyGroupHistoryResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateSecuredPartyGroupRequestMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q27="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="UpdateSecuredPartyGroupRequest" nillable="true" type="q27:UpdateSecuredPartyGroupRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateSecuredPartyGroupResponseMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q28="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="UpdateSecuredPartyGroupResponse" nillable="true" type="q28:UpdateSecuredPartyGroupResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ResetAccessCodeRequestMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q29="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="ResetAccessCodeRequest" nillable="true" type="q29:ResetAccessCodeRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ResetAccessCodeResponseMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q30="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="ResetAccessCodeResponse" nillable="true" type="q30:ResetAccessCodeResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ChangeAccessCodeRequestMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q31="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="ChangeAccessCodeRequest" nillable="true" type="q31:ChangeAccessCodeRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ChangeAccessCodeResponseMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q32="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="ChangeAccessCodeResponse" nillable="true" type="q32:ChangeAccessCodeResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SearchByRegistrationNumberRequestMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q33="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="SearchByRegistrationNumberRequest" nillable="true" type="q33:SearchByRegistrationNumberRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SearchByRegistrationNumberResponseMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q34="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="SearchByRegistrationNumberResponse" nillable="true" type="q34:SearchByRegistrationNumberResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SearchBySerialNumberRequestMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q35="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="SearchBySerialNumberRequest" nillable="true" type="q35:SearchBySerialNumberRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SearchBySerialNumberResponseMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q36="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="SearchBySerialNumberResponse" nillable="true" type="q36:SearchBySerialNumberResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SearchByGrantorRequestMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q37="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="SearchByGrantorRequest" nillable="true" type="q37:SearchByGrantorRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SearchByGrantorResponseMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q38="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="SearchByGrantorResponse" nillable="true" type="q38:SearchByGrantorResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SearchByGrantorAndEventDateRangeRequestMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q39="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="SearchByGrantorAndEventDateRangeRequest" nillable="true" type="q39:SearchByGrantorAndEventDateRangeRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SearchByGrantorAndEventDateRangeResponseMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q40="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="SearchByGrantorAndEventDateRangeResponse" nillable="true" type="q40:SearchByGrantorAndEventDateRangeResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OrdinalSearchRequestMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q41="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="OrdinalSearchRequest" nillable="true" type="q41:OrdinalSearchRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OrdinalSearchResponseMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q42="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="OrdinalSearchResponse" nillable="true" type="q42:OrdinalSearchResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetrieveSearchResultRequestMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q43="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="RetrieveSearchResultRequest" nillable="true" type="q43:RetrieveSearchResultRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetrieveSearchResultResponseMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q44="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="RetrieveSearchResultResponse" nillable="true" type="q44:RetrieveSearchResultResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetrieveSearchResultRegistrationAttachmentRequestMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q45="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="RetrieveSearchResultRegistrationAttachmentRequest" nillable="true" type="q45:RetrieveSearchResultRegistrationAttachmentRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetrieveSearchResultRegistrationAttachmentResponseMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q46="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="RetrieveSearchResultRegistrationAttachmentResponse" nillable="true" type="q46:RetrieveSearchResultRegistrationAttachmentResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetrieveGrantorSearchResultDetailRequestMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q47="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="RetrieveGrantorSearchResultDetailRequest" nillable="true" type="q47:RetrieveGrantorSearchResultDetailRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetrieveGrantorSearchResultDetailResponseMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q48="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="RetrieveGrantorSearchResultDetailResponse" nillable="true" type="q48:RetrieveGrantorSearchResultDetailResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FilterGrantorSearchResultRequestMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q49="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="FilterGrantorSearchResultRequest" nillable="true" type="q49:FilterGrantorSearchResultRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FilterGrantorSearchResultResponseMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q50="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="FilterGrantorSearchResultResponse" nillable="true" type="q50:FilterGrantorSearchResultResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FilterGrantorAndEventDateRangeSearchResultRequestMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q51="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="FilterGrantorAndEventDateRangeSearchResultRequest" nillable="true" type="q51:FilterGrantorAndEventDateRangeSearchResultRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FilterGrantorAndEventDateRangeSearchResultResponseMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q52="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="FilterGrantorAndEventDateRangeSearchResultResponse" nillable="true" type="q52:FilterGrantorAndEventDateRangeSearchResultResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetrieveRegistrationHistoryDetailRequestMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q53="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="RetrieveRegistrationHistoryDetailRequest" nillable="true" type="q53:RetrieveRegistrationHistoryDetailRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetrieveRegistrationHistoryDetailResponseMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q54="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="RetrieveRegistrationHistoryDetailResponse" nillable="true" type="q54:RetrieveRegistrationHistoryDetailResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RequestSearchCertificateRequestMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q55="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="RequestSearchCertificateRequest" nillable="true" type="q55:RequestSearchCertificateRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RequestSearchCertificateResponseMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q56="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="RequestSearchCertificateResponse" nillable="true" type="q56:RequestSearchCertificateResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetrieveSearchCertificateRequestMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q57="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="RetrieveSearchCertificateRequest" nillable="true" type="q57:RetrieveSearchCertificateRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetrieveSearchCertificateResponseMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q58="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="RetrieveSearchCertificateResponse" nillable="true" type="q58:RetrieveSearchCertificateResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetrieveSearchCertificateRegistrationAttachmentRequestMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q59="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="RetrieveSearchCertificateRegistrationAttachmentRequest" nillable="true" type="q59:RetrieveSearchCertificateRegistrationAttachmentRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetrieveSearchCertificateRegistrationAttachmentResponseMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q60="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="RetrieveSearchCertificateRegistrationAttachmentResponse" nillable="true" type="q60:RetrieveSearchCertificateRegistrationAttachmentResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetrieveMessagesRequestMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q61="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="RetrieveMessagesRequest" nillable="true" type="q61:RetrieveMessagesRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetrieveMessagesResponseMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q62="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="RetrieveMessagesResponse" nillable="true" type="q62:RetrieveMessagesResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetrieveMessagePdfRequestMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q63="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="RetrieveMessagePdfRequest" nillable="true" type="q63:RetrieveMessagePdfRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetrieveMessagePdfResponseMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q64="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="RetrieveMessagePdfResponse" nillable="true" type="q64:RetrieveMessagePdfResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteMessagesRequestMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q65="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="DeleteMessagesRequest" nillable="true" type="q65:DeleteMessagesRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteMessagesResponseMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q66="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="DeleteMessagesResponse" nillable="true" type="q66:DeleteMessagesResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PingRequestMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q67="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="PingRequest" nillable="true" type="q67:PingRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PingResponseMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q68="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="PingResponse" nillable="true" type="q68:PingResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ChangeB2GPasswordRequestMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q69="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="ChangeB2GPasswordRequest" nillable="true" type="q69:ChangeB2GPasswordRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ChangeB2GPasswordResponseMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q70="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="ChangeB2GPasswordResponse" nillable="true" type="q70:ChangeB2GPasswordResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsLaxSupportedRequestMessage">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsLaxSupportedResponseMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q71="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="IsLaxSupportedResponse" nillable="true" type="q71:IsLaxSupportedResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RequestReportRequestMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q72="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="RequestReportRequest" nillable="true" type="q72:RequestReportRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RequestReportResponseMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q73="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="RequestReportResponse" nillable="true" type="q73:RequestReportResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetrieveReportRequestMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q74="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="RetrieveReportRequest" nillable="true" type="q74:RetrieveReportRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetrieveReportResponseMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q75="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="RetrieveReportResponse" nillable="true" type="q75:RetrieveReportResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetrieveReportSummariesRequestMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q76="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="RetrieveReportSummariesRequest" nillable="true" type="q76:RetrieveReportSummariesRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetrieveReportSummariesResponseMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q77="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="RetrieveReportSummariesResponse" nillable="true" type="q77:RetrieveReportSummariesResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteReportRequestMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q78="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="DeleteReportRequest" nillable="true" type="q78:DeleteReportRequestType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteReportResponseMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q79="http://schemas.ppsr.gov.au/2011/04/data" minOccurs="0" name="DeleteReportResponse" nillable="true" type="q79:DeleteReportResponseType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

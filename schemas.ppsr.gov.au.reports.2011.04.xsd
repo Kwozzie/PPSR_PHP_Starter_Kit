@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.ppsr.gov.au/reports" elementFormDefault="qualified" targetNamespace="http://schemas.ppsr.gov.au/reports" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="BaseReportOutputType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="B2GCustomersUserDefinedFields" nillable="true" type="tns:ArrayOfB2GCustomersUserDefinedField" />
+      <xs:element name="Environment" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReportDatabaseUpdatedDatetime" nillable="true" type="xs:dateTime" />
+      <xs:element name="ReportName" nillable="true" type="xs:string" />
+      <xs:element name="ReportNumber" nillable="true" type="xs:string" />
+      <xs:element name="ReportProducedDateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ReportRequestedAccountCustomerName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReportRequestedAccountCustomerNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReportRequestedB2GAccountCustomerLocation" nillable="true" type="xs:string" />
+      <xs:element name="ReportRequestedUsername" nillable="true" type="xs:string" />
+      <xs:element name="ReportType" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BaseReportOutputType" nillable="true" type="tns:BaseReportOutputType" />
+  <xs:complexType name="ArrayOfB2GCustomersUserDefinedField">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="B2GCustomersUserDefinedField" nillable="true" type="tns:B2GCustomersUserDefinedField" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfB2GCustomersUserDefinedField" nillable="true" type="tns:ArrayOfB2GCustomersUserDefinedField" />
+  <xs:complexType name="B2GCustomersUserDefinedField">
+    <xs:sequence>
+      <xs:element name="FieldName" nillable="true" type="xs:string" />
+      <xs:element name="FieldValue" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="B2GCustomersUserDefinedField" nillable="true" type="tns:B2GCustomersUserDefinedField" />
+  <xs:complexType name="RegistrationsDueToExpireReportOutputType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseReportOutputType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CollateralRegistrations" nillable="true" type="tns:ArrayOfCollateralRegistrationDueToExpire" />
+          <xs:element name="ReportCriteria" nillable="true" type="tns:RegistrationsDueToExpireReportCriteriaType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RegistrationsDueToExpireReportOutputType" nillable="true" type="tns:RegistrationsDueToExpireReportOutputType" />
+  <xs:complexType name="ArrayOfCollateralRegistrationDueToExpire">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CollateralRegistrationDueToExpire" nillable="true" type="tns:CollateralRegistrationDueToExpire" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCollateralRegistrationDueToExpire" nillable="true" type="tns:ArrayOfCollateralRegistrationDueToExpire" />
+  <xs:complexType name="CollateralRegistrationDueToExpire">
+    <xs:sequence>
+      <xs:element name="CollateralClassType" nillable="true" type="xs:string" />
+      <xs:element name="CollateralType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GivingOfNoticeIdentifier" nillable="true" type="xs:string" />
+      <xs:element name="IsMigrated" type="xs:boolean" />
+      <xs:element name="IsTransitional" type="xs:boolean" />
+      <xs:element name="RegistrationEndTime" type="xs:dateTime" />
+      <xs:element name="RegistrationNumber" nillable="true" type="xs:string" />
+      <xs:element name="SecuredPartyGroupNumber" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CollateralRegistrationDueToExpire" nillable="true" type="tns:CollateralRegistrationDueToExpire" />
+  <xs:complexType name="RegistrationsDueToExpireReportCriteriaType">
+    <xs:sequence>
+      <xs:element name="DueToExpireFromDate" type="xs:dateTime" />
+      <xs:element name="DueToExpireToDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SecuredPartyGroupAccessCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SecuredPartyGroupNumber" nillable="true" type="xs:string" />
+      <xs:element name="SortBy" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RegistrationsDueToExpireReportCriteriaType" nillable="true" type="tns:RegistrationsDueToExpireReportCriteriaType" />
+</xs:schema>

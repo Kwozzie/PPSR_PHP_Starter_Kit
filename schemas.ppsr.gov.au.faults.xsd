@@ -1,0 +1,364 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.ppsr.gov.au/faults" elementFormDefault="qualified" targetNamespace="http://schemas.ppsr.gov.au/faults" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="PpsrSoapFaultDetail">
+    <xs:sequence>
+      <xs:element name="ErrorNumber" nillable="true" type="xs:string" />
+      <xs:element name="ErrorReferenceId" nillable="true" type="xs:string" />
+      <xs:element name="RequestProcessedByEnvironment" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PpsrSoapFaultDetail" nillable="true" type="tns:PpsrSoapFaultDetail" />
+  <xs:complexType name="PpsrIncorrectEnvironmentFaultDetail">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PpsrSoapFaultDetail">
+        <xs:sequence>
+          <xs:element name="ReceivedByEnvironment" nillable="true" type="xs:string" />
+          <xs:element name="TargetEnvironment" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PpsrIncorrectEnvironmentFaultDetail" nillable="true" type="tns:PpsrIncorrectEnvironmentFaultDetail" />
+  <xs:complexType name="PpsrInvalidB2GRequestMessageFaultDetail">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PpsrSoapFaultDetail">
+        <xs:sequence>
+          <xs:element name="CustomersRequestMessageId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PpsrInvalidB2GRequestMessageFaultDetail" nillable="true" type="tns:PpsrInvalidB2GRequestMessageFaultDetail" />
+  <xs:complexType name="PpsrUnauthorisedFaultDetail">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PpsrSoapFaultDetail">
+        <xs:sequence>
+          <xs:element name="Task" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PpsrUnauthorisedFaultDetail" nillable="true" type="tns:PpsrUnauthorisedFaultDetail" />
+  <xs:complexType name="PpsrStringLengthExceededFaultDetail">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PpsrSoapFaultDetail">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ElementName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ElementValue" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MaxAllowedLength" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PpsrStringLengthExceededFaultDetail" nillable="true" type="tns:PpsrStringLengthExceededFaultDetail" />
+  <xs:complexType name="PpsrInvalidDateTimeFormatFaultDetail">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PpsrSoapFaultDetail">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ElementName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PpsrInvalidDateTimeFormatFaultDetail" nillable="true" type="tns:PpsrInvalidDateTimeFormatFaultDetail" />
+  <xs:complexType name="PpsrCollateralRegistrationCreateValidationFaultDetail">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PpsrSoapFaultDetail">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ApplicationValidationErrors" nillable="true" type="tns:ArrayOfPpsrValidationError" />
+          <xs:element minOccurs="0" name="AttachmentValidationErrors" nillable="true" type="tns:ArrayOfPpsrValidationErrorGroup" />
+          <xs:element minOccurs="0" name="CollateralRegistrationValidationErrors" nillable="true" type="tns:ArrayOfPpsrValidationErrorGroup" />
+          <xs:element minOccurs="0" name="GrantorValidationErrors" nillable="true" type="tns:ArrayOfPpsrValidationErrorGroup" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PpsrCollateralRegistrationCreateValidationFaultDetail" nillable="true" type="tns:PpsrCollateralRegistrationCreateValidationFaultDetail" />
+  <xs:complexType name="ArrayOfPpsrValidationError">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PpsrValidationError" nillable="true" type="tns:PpsrValidationError" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPpsrValidationError" nillable="true" type="tns:ArrayOfPpsrValidationError" />
+  <xs:complexType name="PpsrValidationError">
+    <xs:sequence>
+      <xs:element name="ErrorMessage" nillable="true" type="xs:string" />
+      <xs:element name="ErrorNumber" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PpsrValidationError" nillable="true" type="tns:PpsrValidationError" />
+  <xs:complexType name="ArrayOfPpsrValidationErrorGroup">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PpsrValidationErrorGroup" nillable="true" type="tns:PpsrValidationErrorGroup" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPpsrValidationErrorGroup" nillable="true" type="tns:ArrayOfPpsrValidationErrorGroup" />
+  <xs:complexType name="PpsrValidationErrorGroup">
+    <xs:sequence>
+      <xs:element name="SequenceNumber" type="xs:short" />
+      <xs:element name="ValidationErrors" nillable="true" type="tns:ArrayOfPpsrValidationError" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PpsrValidationErrorGroup" nillable="true" type="tns:PpsrValidationErrorGroup" />
+  <xs:complexType name="PpsrCollateralRegistrationUploadAttachmentFaultDetail">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PpsrSoapFaultDetail">
+        <xs:sequence>
+          <xs:element name="AttachmentFileName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PpsrCollateralRegistrationUploadAttachmentFaultDetail" nillable="true" type="tns:PpsrCollateralRegistrationUploadAttachmentFaultDetail" />
+  <xs:complexType name="PpsrCollateralRegistrationAccessFaultDetail">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PpsrSoapFaultDetail">
+        <xs:sequence>
+          <xs:element name="RegistrationNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PpsrCollateralRegistrationAccessFaultDetail" nillable="true" type="tns:PpsrCollateralRegistrationAccessFaultDetail" />
+  <xs:complexType name="PpsrCollateralRegistrationRetrieveFaultDetail">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PpsrSoapFaultDetail">
+        <xs:sequence>
+          <xs:element name="RegistrationNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PpsrCollateralRegistrationRetrieveFaultDetail" nillable="true" type="tns:PpsrCollateralRegistrationRetrieveFaultDetail" />
+  <xs:complexType name="PpsrCollateralRegistrationRetrieveAttachmentFaultDetail">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PpsrSoapFaultDetail">
+        <xs:sequence>
+          <xs:element name="AttachmentId" type="xs:long" />
+          <xs:element name="RegistrationNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PpsrCollateralRegistrationRetrieveAttachmentFaultDetail" nillable="true" type="tns:PpsrCollateralRegistrationRetrieveAttachmentFaultDetail" />
+  <xs:complexType name="PpsrCollateralRegistrationAmendValidationFaultDetail">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PpsrSoapFaultDetail">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AddedAttachmentValidationErrors" nillable="true" type="tns:ArrayOfPpsrValidationErrorGroup" />
+          <xs:element minOccurs="0" name="AddedGrantorValidationErrors" nillable="true" type="tns:ArrayOfPpsrValidationErrorGroup" />
+          <xs:element minOccurs="0" name="CollateralRegistrationValidationErrors" nillable="true" type="tns:ArrayOfPpsrValidationError" />
+          <xs:element name="RegistrationNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RemovedAttachmentValidationErrors" nillable="true" type="tns:ArrayOfPpsrValidationErrorGroup" />
+          <xs:element minOccurs="0" name="RemovedGrantorValidationErrors" nillable="true" type="tns:ArrayOfPpsrValidationErrorGroup" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PpsrCollateralRegistrationAmendValidationFaultDetail" nillable="true" type="tns:PpsrCollateralRegistrationAmendValidationFaultDetail" />
+  <xs:complexType name="PpsrCollateralRegistrationAmendFaultDetail">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PpsrSoapFaultDetail">
+        <xs:sequence>
+          <xs:element name="RegistrationNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PpsrCollateralRegistrationAmendFaultDetail" nillable="true" type="tns:PpsrCollateralRegistrationAmendFaultDetail" />
+  <xs:complexType name="PpsrCollateralRegistrationDischargeFaultDetail">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PpsrSoapFaultDetail">
+        <xs:sequence>
+          <xs:element name="RegistrationNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PpsrCollateralRegistrationDischargeFaultDetail" nillable="true" type="tns:PpsrCollateralRegistrationDischargeFaultDetail" />
+  <xs:complexType name="PpsrCollateralRegistrationTransferSingleFaultDetail">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PpsrSoapFaultDetail">
+        <xs:sequence>
+          <xs:element name="RegistrationNumber" nillable="true" type="xs:string" />
+          <xs:element name="TransferFromSecuredPartyGroupNumber" nillable="true" type="xs:string" />
+          <xs:element name="TransferToSecuredPartyGroupNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PpsrCollateralRegistrationTransferSingleFaultDetail" nillable="true" type="tns:PpsrCollateralRegistrationTransferSingleFaultDetail" />
+  <xs:complexType name="PpsrCollateralRegistrationTransferAllFaultDetail">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PpsrSoapFaultDetail">
+        <xs:sequence>
+          <xs:element name="TransferFromSecuredPartyGroupNumber" nillable="true" type="xs:string" />
+          <xs:element name="TransferToSecuredPartyGroupNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PpsrCollateralRegistrationTransferAllFaultDetail" nillable="true" type="tns:PpsrCollateralRegistrationTransferAllFaultDetail" />
+  <xs:complexType name="PpsrCollateralRegistrationResetRegistrationTokenFaultDetail">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PpsrSoapFaultDetail">
+        <xs:sequence>
+          <xs:element name="RegistrationNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PpsrCollateralRegistrationResetRegistrationTokenFaultDetail" nillable="true" type="tns:PpsrCollateralRegistrationResetRegistrationTokenFaultDetail" />
+  <xs:complexType name="PpsrCollateralRegistrationReissueVerificationStatementFaultDetail">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PpsrSoapFaultDetail">
+        <xs:sequence>
+          <xs:element name="RegistrationNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PpsrCollateralRegistrationReissueVerificationStatementFaultDetail" nillable="true" type="tns:PpsrCollateralRegistrationReissueVerificationStatementFaultDetail" />
+  <xs:complexType name="PpsrSecuredPartyGroupCreateValidationFaultDetail">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PpsrSoapFaultDetail">
+        <xs:sequence>
+          <xs:element name="AddressForServiceValidationErrors" nillable="true" type="tns:ArrayOfPpsrValidationError" />
+          <xs:element name="SecuredPartyGroupValidationErrors" nillable="true" type="tns:ArrayOfPpsrValidationError" />
+          <xs:element name="SecuredPartyValidationErrors" nillable="true" type="tns:ArrayOfPpsrValidationErrorGroup" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PpsrSecuredPartyGroupCreateValidationFaultDetail" nillable="true" type="tns:PpsrSecuredPartyGroupCreateValidationFaultDetail" />
+  <xs:complexType name="PpsrSecuredPartyGroupAccessFaultDetail">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PpsrSoapFaultDetail">
+        <xs:sequence>
+          <xs:element name="SecuredPartyGroupNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PpsrSecuredPartyGroupAccessFaultDetail" nillable="true" type="tns:PpsrSecuredPartyGroupAccessFaultDetail" />
+  <xs:complexType name="PpsrSecuredPartyGroupUpdateFaultDetail">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PpsrSoapFaultDetail">
+        <xs:sequence>
+          <xs:element name="SecuredPartyGroupNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PpsrSecuredPartyGroupUpdateFaultDetail" nillable="true" type="tns:PpsrSecuredPartyGroupUpdateFaultDetail" />
+  <xs:complexType name="PpsrSecuredPartyGroupUpdateValidationFaultDetail">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PpsrSoapFaultDetail">
+        <xs:sequence>
+          <xs:element name="AddressForServiceValidationErrors" nillable="true" type="tns:ArrayOfPpsrValidationError" />
+          <xs:element name="ReverifySecuredPartyValidationErrors" nillable="true" type="tns:ArrayOfPpsrValidationErrorGroup" />
+          <xs:element name="SecuredPartyGroupValidationErrors" nillable="true" type="tns:ArrayOfPpsrValidationError" />
+          <xs:element name="UpdatedSecuredPartyValidationErrors" nillable="true" type="tns:ArrayOfPpsrValidationErrorGroup" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PpsrSecuredPartyGroupUpdateValidationFaultDetail" nillable="true" type="tns:PpsrSecuredPartyGroupUpdateValidationFaultDetail" />
+  <xs:complexType name="PpsrSecuredPartyGroupChangeAccessCodeValidationFaultDetail">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PpsrSoapFaultDetail">
+        <xs:sequence>
+          <xs:element name="SecuredPartyGroupNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PpsrSecuredPartyGroupChangeAccessCodeValidationFaultDetail" nillable="true" type="tns:PpsrSecuredPartyGroupChangeAccessCodeValidationFaultDetail" />
+  <xs:complexType name="PpsrCollateralRegistrationSearchFaultDetail">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PpsrSoapFaultDetail">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PpsrCollateralRegistrationSearchFaultDetail" nillable="true" type="tns:PpsrCollateralRegistrationSearchFaultDetail" />
+  <xs:complexType name="PpsrCollateralRegistrationSearchValidationFaultDetail">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PpsrSoapFaultDetail">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ValidationErrors" nillable="true" type="tns:ArrayOfPpsrValidationError" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PpsrCollateralRegistrationSearchValidationFaultDetail" nillable="true" type="tns:PpsrCollateralRegistrationSearchValidationFaultDetail" />
+  <xs:complexType name="PpsrCollateralRegistrationSearchOrdinalSearchValidationFaultDetail">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PpsrSoapFaultDetail">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="RegistrationEventOneValidationErrors" nillable="true" type="tns:ArrayOfPpsrValidationError" />
+          <xs:element minOccurs="0" name="RegistrationEventTwoValidationErrors" nillable="true" type="tns:ArrayOfPpsrValidationError" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PpsrCollateralRegistrationSearchOrdinalSearchValidationFaultDetail" nillable="true" type="tns:PpsrCollateralRegistrationSearchOrdinalSearchValidationFaultDetail" />
+  <xs:complexType name="PpsrB2GMailboxRetrieveMessagesValidationFaultDetail">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PpsrSoapFaultDetail">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="RetrieveValidationErrors" nillable="true" type="tns:ArrayOfPpsrValidationError" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PpsrB2GMailboxRetrieveMessagesValidationFaultDetail" nillable="true" type="tns:PpsrB2GMailboxRetrieveMessagesValidationFaultDetail" />
+  <xs:complexType name="PpsrB2GMailboxMessageAccessFaultDetail">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PpsrSoapFaultDetail">
+        <xs:sequence>
+          <xs:element name="B2GMailboxMessageId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PpsrB2GMailboxMessageAccessFaultDetail" nillable="true" type="tns:PpsrB2GMailboxMessageAccessFaultDetail" />
+  <xs:complexType name="PpsrB2GMailboxRetrieveMessagePdfFaultDetail">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PpsrSoapFaultDetail">
+        <xs:sequence>
+          <xs:element name="B2GMailboxMessageId" type="xs:long" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PpsrB2GMailboxRetrieveMessagePdfFaultDetail" nillable="true" type="tns:PpsrB2GMailboxRetrieveMessagePdfFaultDetail" />
+  <xs:complexType name="PpsrRegisterOperationsChangeB2GPasswordValidationFaultDetail">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PpsrSoapFaultDetail">
+        <xs:sequence>
+          <xs:element name="Username" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PpsrRegisterOperationsChangeB2GPasswordValidationFaultDetail" nillable="true" type="tns:PpsrRegisterOperationsChangeB2GPasswordValidationFaultDetail" />
+  <xs:complexType name="PpsrReportValidationFaultDetail">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PpsrSoapFaultDetail">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ValidationErrors" nillable="true" type="tns:ArrayOfPpsrValidationError" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PpsrReportValidationFaultDetail" nillable="true" type="tns:PpsrReportValidationFaultDetail" />
+  <xs:complexType name="PpsrReportFaultDetail">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PpsrSoapFaultDetail">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PpsrReportFaultDetail" nillable="true" type="tns:PpsrReportFaultDetail" />
+</xs:schema>

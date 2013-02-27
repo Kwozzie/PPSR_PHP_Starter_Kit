@@ -1,0 +1,2323 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.ppsr.gov.au/2011/04/data" elementFormDefault="qualified" targetNamespace="http://schemas.ppsr.gov.au/2011/04/data" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="schemas.microsoft.com.2003.10.Serialization.Arrays.xsd" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="CreateRegistrationsRequestType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonRequestType">
+        <xs:sequence>
+          <xs:element name="CollateralType" type="tns:NewRegistrationCollateralType" />
+          <xs:element minOccurs="0" name="Grantors" nillable="true" type="tns:ArrayOfNewGrantor" />
+          <xs:element name="IsTransitional" type="xs:boolean" />
+          <xs:element name="NewRegistrations" nillable="true" type="tns:ArrayOfNewCollateralRegistration" />
+          <xs:element name="SecuredPartyGroupNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CreateRegistrationsRequestType" nillable="true" type="tns:CreateRegistrationsRequestType" />
+  <xs:complexType name="CommonRequestType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonB2GMessageType">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CommonRequestType" nillable="true" type="tns:CommonRequestType" />
+  <xs:complexType name="CommonB2GMessageType">
+    <xs:sequence>
+      <xs:element name="CustomersRequestMessageId" nillable="true" type="xs:string" />
+      <xs:element name="CustomersUserDefinedFields" nillable="true" type="tns:ArrayOfCustomersUserDefinedField" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CommonB2GMessageType" nillable="true" type="tns:CommonB2GMessageType" />
+  <xs:complexType name="ArrayOfCustomersUserDefinedField">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CustomersUserDefinedField" nillable="true" type="tns:CustomersUserDefinedField" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCustomersUserDefinedField" nillable="true" type="tns:ArrayOfCustomersUserDefinedField" />
+  <xs:complexType name="CustomersUserDefinedField">
+    <xs:sequence>
+      <xs:element name="FieldName" nillable="true" type="xs:string" />
+      <xs:element name="FieldValue" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CustomersUserDefinedField" nillable="true" type="tns:CustomersUserDefinedField" />
+  <xs:complexType name="RetrieveSecuredPartyGroupRequestType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonRequestType">
+        <xs:sequence>
+          <xs:element name="SecuredPartyGroupAccessCode" nillable="true" type="xs:string" />
+          <xs:element name="SecuredPartyGroupNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RetrieveSecuredPartyGroupRequestType" nillable="true" type="tns:RetrieveSecuredPartyGroupRequestType" />
+  <xs:complexType name="UpdateSecuredPartyGroupRequestType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonRequestType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ReverifySecuredParties" nillable="true" type="tns:ArrayOfReverifySecuredParty" />
+          <xs:element name="SecuredPartyGroupAccessCode" nillable="true" type="xs:string" />
+          <xs:element name="SecuredPartyGroupNumber" nillable="true" type="xs:string" />
+          <xs:element name="SecuredPartyGroupVersionId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UpdatedAddressForService" nillable="true" type="tns:UpdatedAddressForService" />
+          <xs:element minOccurs="0" name="UpdatedSecuredParties" nillable="true" type="tns:ArrayOfUpdatedSecuredParty" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UpdateSecuredPartyGroupRequestType" nillable="true" type="tns:UpdateSecuredPartyGroupRequestType" />
+  <xs:complexType name="ArrayOfReverifySecuredParty">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ReverifySecuredParty" nillable="true" type="tns:ReverifySecuredParty" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfReverifySecuredParty" nillable="true" type="tns:ArrayOfReverifySecuredParty" />
+  <xs:complexType name="ReverifySecuredParty">
+    <xs:sequence>
+      <xs:element name="OrganisationNumber" nillable="true" type="xs:string" />
+      <xs:element name="OrganisationNumberType" type="tns:OrganisationNumberType" />
+      <xs:element name="ReverifySecuredPartySequenceNumber" type="xs:short" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReverifySecuredParty" nillable="true" type="tns:ReverifySecuredParty" />
+  <xs:simpleType name="OrganisationNumberType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unsupported" />
+      <xs:enumeration value="ACN" />
+      <xs:enumeration value="ARBN" />
+      <xs:enumeration value="ARSN" />
+      <xs:enumeration value="ABN" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="OrganisationNumberType" nillable="true" type="tns:OrganisationNumberType" />
+  <xs:complexType name="UpdatedAddressForService">
+    <xs:sequence>
+      <xs:element name="AddressForService" nillable="true" type="tns:NewAddressForService" />
+      <xs:element minOccurs="0" name="CompletionNotificationEmailAddress" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UpdatedAddressForService" nillable="true" type="tns:UpdatedAddressForService" />
+  <xs:complexType name="NewAddressForService">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Addressee" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="B2GAccountCustomerNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FaxNumber" nillable="true" type="xs:string" />
+      <xs:element name="MailingAddress" nillable="true" type="tns:NewAddress" />
+      <xs:element minOccurs="0" name="PhysicalAddress" nillable="true" type="tns:NewAddress" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NewAddressForService" nillable="true" type="tns:NewAddressForService" />
+  <xs:complexType name="NewAddress">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ISO3166CountryCode" nillable="true" type="xs:string" />
+      <xs:element name="Line1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Line2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Line3" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Locality" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Postcode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="State" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NewAddress" nillable="true" type="tns:NewAddress" />
+  <xs:complexType name="ArrayOfUpdatedSecuredParty">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UpdatedSecuredParty" nillable="true" type="tns:UpdatedSecuredParty" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUpdatedSecuredParty" nillable="true" type="tns:ArrayOfUpdatedSecuredParty" />
+  <xs:complexType name="UpdatedSecuredParty">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ContactName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContactPhone" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Individual" nillable="true" type="tns:SecuredPartyIndividual" />
+      <xs:element minOccurs="0" name="MailingAddress" nillable="true" type="tns:NewAddress" />
+      <xs:element minOccurs="0" name="Organisation" nillable="true" type="tns:SecuredPartyOrganisation" />
+      <xs:element name="SecuredPartyType" type="tns:SecuredPartyType" />
+      <xs:element name="UpdatedSecuredPartySequenceNumber" type="xs:short" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UpdatedSecuredParty" nillable="true" type="tns:UpdatedSecuredParty" />
+  <xs:complexType name="SecuredPartyIndividual">
+    <xs:sequence>
+      <xs:element name="FamilyName" nillable="true" type="xs:string" />
+      <xs:element name="GivenNames" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SecuredPartyIndividual" nillable="true" type="tns:SecuredPartyIndividual" />
+  <xs:complexType name="SecuredPartyOrganisation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="OrganisationName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OrganisationNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OrganisationNumberType" nillable="true" type="tns:OrganisationNumberType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SecuredPartyOrganisation" nillable="true" type="tns:SecuredPartyOrganisation" />
+  <xs:simpleType name="SecuredPartyType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unsupported" />
+      <xs:enumeration value="Organisation" />
+      <xs:enumeration value="Individual" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="SecuredPartyType" nillable="true" type="tns:SecuredPartyType" />
+  <xs:complexType name="ResetAccessCodeRequestType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonRequestType">
+        <xs:sequence>
+          <xs:element name="SecuredPartyGroupNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ResetAccessCodeRequestType" nillable="true" type="tns:ResetAccessCodeRequestType" />
+  <xs:complexType name="ChangeAccessCodeRequestType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonRequestType">
+        <xs:sequence>
+          <xs:element name="CurrentSecuredPartyGroupAccessCode" nillable="true" type="xs:string" />
+          <xs:element name="NewSecuredPartyGroupAccessCode" nillable="true" type="xs:string" />
+          <xs:element name="SecuredPartyGroupNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ChangeAccessCodeRequestType" nillable="true" type="tns:ChangeAccessCodeRequestType" />
+  <xs:complexType name="RetrieveSecuredPartyGroupHistoryRequestType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonRequestType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="SecuredPartyGroupAccessCode" nillable="true" type="xs:string" />
+          <xs:element name="SecuredPartyGroupNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RetrieveSecuredPartyGroupHistoryRequestType" nillable="true" type="tns:RetrieveSecuredPartyGroupHistoryRequestType" />
+  <xs:complexType name="SearchByRegistrationNumberRequestType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonRequestType">
+        <xs:sequence>
+          <xs:element name="SearchCriteria" nillable="true" type="tns:SearchByRegistrationNumberSearchCriteria" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SearchByRegistrationNumberRequestType" nillable="true" type="tns:SearchByRegistrationNumberRequestType" />
+  <xs:complexType name="SearchByRegistrationNumberSearchCriteria">
+    <xs:sequence>
+      <xs:element name="RegistrationNumber" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SearchByRegistrationNumberSearchCriteria" nillable="true" type="tns:SearchByRegistrationNumberSearchCriteria" />
+  <xs:complexType name="SearchBySerialNumberRequestType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonRequestType">
+        <xs:sequence>
+          <xs:element name="SearchCriteria" nillable="true" type="tns:SearchBySerialNumberSearchCriteria" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SearchBySerialNumberRequestType" nillable="true" type="tns:SearchBySerialNumberRequestType" />
+  <xs:complexType name="SearchBySerialNumberSearchCriteria">
+    <xs:sequence>
+      <xs:element name="IncludeArchived" type="xs:boolean" />
+      <xs:element name="IncludeCurrent" type="xs:boolean" />
+      <xs:element name="IncludeExpired" type="xs:boolean" />
+      <xs:element name="IncludeRemoved" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PointInTimeDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="SerialNumber" nillable="true" type="xs:string" />
+      <xs:element name="SerialNumberType" type="tns:SerialNumberSearchCriteriaType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SearchBySerialNumberSearchCriteria" nillable="true" type="tns:SearchBySerialNumberSearchCriteria" />
+  <xs:simpleType name="SerialNumberSearchCriteriaType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unsupported" />
+      <xs:enumeration value="VIN" />
+      <xs:enumeration value="ChassisNumber" />
+      <xs:enumeration value="MotorVehicleManufacturersNumber" />
+      <xs:enumeration value="HIN" />
+      <xs:enumeration value="OfficialNumber" />
+      <xs:enumeration value="AircraftEngineManufacturersNumber" />
+      <xs:enumeration value="AirframeManufacturersNumber" />
+      <xs:enumeration value="HelicopterManufacturersNumber" />
+      <xs:enumeration value="AircraftNationalityCodeAndRegistrationMark" />
+      <xs:enumeration value="PatentNumber" />
+      <xs:enumeration value="TradeMarkNumber" />
+      <xs:enumeration value="DesignNumber" />
+      <xs:enumeration value="PlantBreedersRightNumber" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="SerialNumberSearchCriteriaType" nillable="true" type="tns:SerialNumberSearchCriteriaType" />
+  <xs:complexType name="SearchByGrantorRequestType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonRequestType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AcceptGrantorIndividualSearchDeclaration" type="xs:boolean" />
+          <xs:element name="SearchCriteria" nillable="true" type="tns:SearchByGrantorSearchCriteria" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SearchByGrantorRequestType" nillable="true" type="tns:SearchByGrantorRequestType" />
+  <xs:complexType name="SearchByGrantorSearchCriteria">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CollateralClassSearchCriteria" nillable="true" type="tns:ArrayOfCollateralClassSearchCriteriaType" />
+      <xs:element minOccurs="0" name="GrantorIndividualSearchCriteria" nillable="true" type="tns:GrantorIndividualSearchCriteria" />
+      <xs:element minOccurs="0" name="GrantorOrganisationSearchCriteria" nillable="true" type="tns:GrantorOrganisationSearchCriteria" />
+      <xs:element name="GrantorType" type="tns:GrantorType" />
+      <xs:element name="IncludeArchived" type="xs:boolean" />
+      <xs:element name="IncludeCurrent" type="xs:boolean" />
+      <xs:element name="IncludeExpired" type="xs:boolean" />
+      <xs:element name="IncludeMigratedTransitional" type="xs:boolean" />
+      <xs:element name="IncludeNonMigratedTransitional" type="xs:boolean" />
+      <xs:element name="IncludeNonTransitional" type="xs:boolean" />
+      <xs:element name="IncludeRemoved" type="xs:boolean" />
+      <xs:element name="IsPMSISearchCriteria" type="tns:SearchSelectionFlagType" />
+      <xs:element minOccurs="0" name="PointInTimeDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="RegistrationNumberSortOrder" type="tns:SortOrderType" />
+      <xs:element name="SecurityInterestsOnly" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SearchByGrantorSearchCriteria" nillable="true" type="tns:SearchByGrantorSearchCriteria" />
+  <xs:complexType name="ArrayOfCollateralClassSearchCriteriaType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CollateralClassSearchCriteriaType" type="tns:CollateralClassSearchCriteriaType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCollateralClassSearchCriteriaType" nillable="true" type="tns:ArrayOfCollateralClassSearchCriteriaType" />
+  <xs:simpleType name="CollateralClassSearchCriteriaType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unsupported" />
+      <xs:enumeration value="MotorVehicle" />
+      <xs:enumeration value="Watercraft" />
+      <xs:enumeration value="Aircraft" />
+      <xs:enumeration value="AircraftEngine" />
+      <xs:enumeration value="Airframe" />
+      <xs:enumeration value="Helicopter" />
+      <xs:enumeration value="SmallAircraft" />
+      <xs:enumeration value="Agriculture" />
+      <xs:enumeration value="Crops" />
+      <xs:enumeration value="Livestock" />
+      <xs:enumeration value="OtherGoods" />
+      <xs:enumeration value="FinancialProperty" />
+      <xs:enumeration value="ChattelPaper" />
+      <xs:enumeration value="Currency" />
+      <xs:enumeration value="DocumentOfTitle" />
+      <xs:enumeration value="IntermediatedSecurity" />
+      <xs:enumeration value="InvestmentInstrument" />
+      <xs:enumeration value="NegotiableInstrument" />
+      <xs:enumeration value="IntangibleProperty" />
+      <xs:enumeration value="Account" />
+      <xs:enumeration value="GeneralIntangible" />
+      <xs:enumeration value="IntellectualProperty" />
+      <xs:enumeration value="CircuitLayout" />
+      <xs:enumeration value="Copyright" />
+      <xs:enumeration value="Patent" />
+      <xs:enumeration value="Design" />
+      <xs:enumeration value="TradeMark" />
+      <xs:enumeration value="PlantBreedersRight" />
+      <xs:enumeration value="AllPapNoExcept" />
+      <xs:enumeration value="AllPapWithExcept" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="CollateralClassSearchCriteriaType" nillable="true" type="tns:CollateralClassSearchCriteriaType" />
+  <xs:complexType name="GrantorIndividualSearchCriteria">
+    <xs:sequence>
+      <xs:element name="DateOfBirth" type="xs:dateTime" />
+      <xs:element name="FamilyName" nillable="true" type="xs:string" />
+      <xs:element name="GivenNames" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GrantorIndividualSearchCriteria" nillable="true" type="tns:GrantorIndividualSearchCriteria" />
+  <xs:complexType name="GrantorOrganisationSearchCriteria">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="OrganisationName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OrganisationNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OrganisationNumberType" nillable="true" type="tns:OrganisationNumberType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GrantorOrganisationSearchCriteria" nillable="true" type="tns:GrantorOrganisationSearchCriteria" />
+  <xs:simpleType name="GrantorType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unsupported" />
+      <xs:enumeration value="Organisation" />
+      <xs:enumeration value="Individual" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="GrantorType" nillable="true" type="tns:GrantorType" />
+  <xs:simpleType name="SearchSelectionFlagType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unsupported" />
+      <xs:enumeration value="Include" />
+      <xs:enumeration value="Exclude" />
+      <xs:enumeration value="Either" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="SearchSelectionFlagType" nillable="true" type="tns:SearchSelectionFlagType" />
+  <xs:simpleType name="SortOrderType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unsupported" />
+      <xs:enumeration value="Ascending" />
+      <xs:enumeration value="Descending" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="SortOrderType" nillable="true" type="tns:SortOrderType" />
+  <xs:complexType name="SearchByGrantorAndEventDateRangeRequestType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonRequestType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AcceptGrantorIndividualSearchDeclaration" type="xs:boolean" />
+          <xs:element name="SearchCriteria" nillable="true" type="tns:SearchByGrantorAndEventDateRangeSearchCriteria" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SearchByGrantorAndEventDateRangeRequestType" nillable="true" type="tns:SearchByGrantorAndEventDateRangeRequestType" />
+  <xs:complexType name="SearchByGrantorAndEventDateRangeSearchCriteria">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="GrantorIndividualSearchCriteria" nillable="true" type="tns:GrantorIndividualSearchCriteria" />
+      <xs:element minOccurs="0" name="GrantorOrganisationSearchCriteria" nillable="true" type="tns:GrantorOrganisationSearchCriteria" />
+      <xs:element name="GrantorType" type="tns:GrantorType" />
+      <xs:element name="RegistrationEventFromDate" type="xs:dateTime" />
+      <xs:element name="RegistrationEventToDate" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SearchByGrantorAndEventDateRangeSearchCriteria" nillable="true" type="tns:SearchByGrantorAndEventDateRangeSearchCriteria" />
+  <xs:complexType name="OrdinalSearchRequestType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonRequestType">
+        <xs:sequence>
+          <xs:element name="SearchCriteria" nillable="true" type="tns:OrdinalSearchSearchCriteria" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="OrdinalSearchRequestType" nillable="true" type="tns:OrdinalSearchRequestType" />
+  <xs:complexType name="OrdinalSearchSearchCriteria">
+    <xs:sequence>
+      <xs:element name="RegistrationEventOne" nillable="true" type="tns:RegistrationEvent" />
+      <xs:element name="RegistrationEventTwo" nillable="true" type="tns:RegistrationEvent" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OrdinalSearchSearchCriteria" nillable="true" type="tns:OrdinalSearchSearchCriteria" />
+  <xs:complexType name="RegistrationEvent">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ChangeNumber" nillable="true" type="xs:long" />
+      <xs:element name="RegistrationEventType" type="tns:RegistrationEventType" />
+      <xs:element name="RegistrationNumber" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RegistrationEvent" nillable="true" type="tns:RegistrationEvent" />
+  <xs:simpleType name="RegistrationEventType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unsupported" />
+      <xs:enumeration value="StartTime" />
+      <xs:enumeration value="EndTime" />
+      <xs:enumeration value="ChangeNumber" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="RegistrationEventType" nillable="true" type="tns:RegistrationEventType" />
+  <xs:complexType name="RetrieveSearchResultRequestType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonRequestType">
+        <xs:sequence>
+          <xs:element name="SearchNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RetrieveSearchResultRequestType" nillable="true" type="tns:RetrieveSearchResultRequestType" />
+  <xs:complexType name="RetrieveSearchResultRegistrationAttachmentRequestType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonRequestType">
+        <xs:sequence>
+          <xs:element name="AttachmentId" type="xs:long" />
+          <xs:element name="ChangeNumber" type="xs:long" />
+          <xs:element name="RegistrationNumber" nillable="true" type="xs:string" />
+          <xs:element name="SearchNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RetrieveSearchResultRegistrationAttachmentRequestType" nillable="true" type="tns:RetrieveSearchResultRegistrationAttachmentRequestType" />
+  <xs:complexType name="RetrieveGrantorSearchResultDetailRequestType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonRequestType">
+        <xs:sequence>
+          <xs:element name="FilterNumber" type="xs:int" />
+          <xs:element name="MaximumNumberOfRegistrationsToReturn" type="xs:int" />
+          <xs:element name="SearchNumber" nillable="true" type="xs:string" />
+          <xs:element name="StartResultSequenceNumber" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RetrieveGrantorSearchResultDetailRequestType" nillable="true" type="tns:RetrieveGrantorSearchResultDetailRequestType" />
+  <xs:complexType name="FilterGrantorSearchResultRequestType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonRequestType">
+        <xs:sequence>
+          <xs:element name="FilterCriteria" nillable="true" type="tns:SearchByGrantorFilterCriteria" />
+          <xs:element name="SearchNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="FilterGrantorSearchResultRequestType" nillable="true" type="tns:FilterGrantorSearchResultRequestType" />
+  <xs:complexType name="SearchByGrantorFilterCriteria">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CollateralClassFilterCriteria" nillable="true" type="tns:ArrayOfCollateralClassFilterCriteriaType" />
+      <xs:element minOccurs="0" name="CollateralTypeFilterCriteria" nillable="true" type="tns:ArrayOfCollateralType" />
+      <xs:element name="IncludeMigratedTransitional" type="xs:boolean" />
+      <xs:element name="IncludeNonMigratedTransitional" type="xs:boolean" />
+      <xs:element name="IncludeNonTransitional" type="xs:boolean" />
+      <xs:element name="IsPMSIFilterCriteria" type="tns:SearchSelectionFlagType" />
+      <xs:element minOccurs="0" name="LastChangeTimeYear" nillable="true" type="xs:int" />
+      <xs:element name="SecurityInterestsOnly" type="xs:boolean" />
+      <xs:element minOccurs="0" name="StartTimeYear" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SearchByGrantorFilterCriteria" nillable="true" type="tns:SearchByGrantorFilterCriteria" />
+  <xs:complexType name="ArrayOfCollateralClassFilterCriteriaType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CollateralClassFilterCriteriaType" type="tns:CollateralClassFilterCriteriaType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCollateralClassFilterCriteriaType" nillable="true" type="tns:ArrayOfCollateralClassFilterCriteriaType" />
+  <xs:simpleType name="CollateralClassFilterCriteriaType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unsupported" />
+      <xs:enumeration value="Unknown" />
+      <xs:enumeration value="MotorVehicle" />
+      <xs:enumeration value="Watercraft" />
+      <xs:enumeration value="Aircraft" />
+      <xs:enumeration value="AircraftEngine" />
+      <xs:enumeration value="Airframe" />
+      <xs:enumeration value="Helicopter" />
+      <xs:enumeration value="SmallAircraft" />
+      <xs:enumeration value="Agriculture" />
+      <xs:enumeration value="Crops" />
+      <xs:enumeration value="Livestock" />
+      <xs:enumeration value="OtherGoods" />
+      <xs:enumeration value="FinancialProperty" />
+      <xs:enumeration value="ChattelPaper" />
+      <xs:enumeration value="Currency" />
+      <xs:enumeration value="DocumentOfTitle" />
+      <xs:enumeration value="IntermediatedSecurity" />
+      <xs:enumeration value="InvestmentInstrument" />
+      <xs:enumeration value="NegotiableInstrument" />
+      <xs:enumeration value="IntangibleProperty" />
+      <xs:enumeration value="Account" />
+      <xs:enumeration value="GeneralIntangible" />
+      <xs:enumeration value="IntellectualProperty" />
+      <xs:enumeration value="CircuitLayout" />
+      <xs:enumeration value="Copyright" />
+      <xs:enumeration value="Patent" />
+      <xs:enumeration value="Design" />
+      <xs:enumeration value="TradeMark" />
+      <xs:enumeration value="PlantBreedersRight" />
+      <xs:enumeration value="AllPapNoExcept" />
+      <xs:enumeration value="AllPapWithExcept" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="CollateralClassFilterCriteriaType" nillable="true" type="tns:CollateralClassFilterCriteriaType" />
+  <xs:complexType name="ArrayOfCollateralType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CollateralType" type="tns:CollateralType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCollateralType" nillable="true" type="tns:ArrayOfCollateralType" />
+  <xs:simpleType name="CollateralType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unsupported" />
+      <xs:enumeration value="Unknown" />
+      <xs:enumeration value="Consumer" />
+      <xs:enumeration value="Commercial" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="CollateralType" nillable="true" type="tns:CollateralType" />
+  <xs:complexType name="FilterGrantorAndEventDateRangeSearchResultRequestType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonRequestType">
+        <xs:sequence>
+          <xs:element name="FilterCriteria" nillable="true" type="tns:SearchByGrantorAndEventDateRangeFilterCriteria" />
+          <xs:element name="SearchNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="FilterGrantorAndEventDateRangeSearchResultRequestType" nillable="true" type="tns:FilterGrantorAndEventDateRangeSearchResultRequestType" />
+  <xs:complexType name="SearchByGrantorAndEventDateRangeFilterCriteria">
+    <xs:sequence>
+      <xs:element name="RegistrationEventFromDate" type="xs:dateTime" />
+      <xs:element name="RegistrationEventToDate" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SearchByGrantorAndEventDateRangeFilterCriteria" nillable="true" type="tns:SearchByGrantorAndEventDateRangeFilterCriteria" />
+  <xs:complexType name="RetrieveRegistrationHistoryDetailRequestType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonRequestType">
+        <xs:sequence>
+          <xs:element name="ChangeNumber" type="xs:long" />
+          <xs:element name="RegistrationNumber" nillable="true" type="xs:string" />
+          <xs:element name="SearchNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RetrieveRegistrationHistoryDetailRequestType" nillable="true" type="tns:RetrieveRegistrationHistoryDetailRequestType" />
+  <xs:complexType name="RequestSearchCertificateRequestType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonRequestType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ChangeNumber" nillable="true" type="xs:long" />
+          <xs:element minOccurs="0" name="RegistrationNumber" nillable="true" type="xs:string" />
+          <xs:element name="SearchNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RequestSearchCertificateRequestType" nillable="true" type="tns:RequestSearchCertificateRequestType" />
+  <xs:complexType name="RetrieveSearchCertificateRequestType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonRequestType">
+        <xs:sequence>
+          <xs:element name="SearchCertificateNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RetrieveSearchCertificateRequestType" nillable="true" type="tns:RetrieveSearchCertificateRequestType" />
+  <xs:complexType name="RetrieveSearchCertificateRegistrationAttachmentRequestType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonRequestType">
+        <xs:sequence>
+          <xs:element name="AttachmentId" type="xs:long" />
+          <xs:element name="SearchCertificateNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RetrieveSearchCertificateRegistrationAttachmentRequestType" nillable="true" type="tns:RetrieveSearchCertificateRegistrationAttachmentRequestType" />
+  <xs:complexType name="RetrieveMessagesRequestType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonRequestType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ChangeNumber" nillable="true" type="xs:long" />
+          <xs:element minOccurs="0" name="GivingOfNoticeIdentifier" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IncludePreviouslyRetrievedMessages" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="MessagesAddedFromDateTime" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="MessagesAddedToDateTime" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="MessagesAfterMessageId" nillable="true" type="xs:long" />
+          <xs:element minOccurs="0" name="MessagesBeforeMessageId" nillable="true" type="xs:long" />
+          <xs:element minOccurs="0" name="NotificationType" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OriginalCustomersRequestMessageId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RegistrationNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SecuredPartyGroupNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RetrieveMessagesRequestType" nillable="true" type="tns:RetrieveMessagesRequestType" />
+  <xs:complexType name="RetrieveMessagePdfRequestType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonRequestType">
+        <xs:sequence>
+          <xs:element name="B2GMailboxMessageId" type="xs:long" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RetrieveMessagePdfRequestType" nillable="true" type="tns:RetrieveMessagePdfRequestType" />
+  <xs:complexType name="DeleteMessagesRequestType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonRequestType">
+        <xs:sequence>
+          <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" name="ToDeleteMessageIds" nillable="true" type="q1:ArrayOflong" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DeleteMessagesRequestType" nillable="true" type="tns:DeleteMessagesRequestType" />
+  <xs:complexType name="PingRequestType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonRequestType">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PingRequestType" nillable="true" type="tns:PingRequestType" />
+  <xs:complexType name="ChangeB2GPasswordRequestType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonRequestType">
+        <xs:sequence>
+          <xs:element name="NewPassword" nillable="true" type="xs:string" />
+          <xs:element name="Username" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ChangeB2GPasswordRequestType" nillable="true" type="tns:ChangeB2GPasswordRequestType" />
+  <xs:complexType name="RequestReportRequestType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonRequestType">
+        <xs:sequence>
+          <xs:element name="ReportCriteria" nillable="true">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:any minOccurs="0" maxOccurs="unbounded" processContents="lax" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="ReportFormat" type="tns:ReportFormatType" />
+          <xs:element minOccurs="0" name="ReportReadyNotificationEmailAddress" nillable="true" type="xs:string" />
+          <xs:element name="ReportType" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RequestReportRequestType" nillable="true" type="tns:RequestReportRequestType" />
+  <xs:simpleType name="ReportFormatType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unsupported" />
+      <xs:enumeration value="Xml" />
+      <xs:enumeration value="Pdf" />
+      <xs:enumeration value="Csv" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ReportFormatType" nillable="true" type="tns:ReportFormatType" />
+  <xs:complexType name="RetrieveReportRequestType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonRequestType">
+        <xs:sequence>
+          <xs:element name="ReportNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RetrieveReportRequestType" nillable="true" type="tns:RetrieveReportRequestType" />
+  <xs:complexType name="RetrieveReportSummariesRequestType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonRequestType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ReportNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ReportType" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RetrieveReportSummariesRequestType" nillable="true" type="tns:RetrieveReportSummariesRequestType" />
+  <xs:complexType name="DeleteReportRequestType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonRequestType">
+        <xs:sequence>
+          <xs:element name="ReportNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DeleteReportRequestType" nillable="true" type="tns:DeleteReportRequestType" />
+  <xs:complexType name="RetrieveRegistrationRequestType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonRequestType">
+        <xs:sequence>
+          <xs:element name="RegistrationNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RegistrationToken" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SecuredPartyGroupAccessCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SecuredPartyGroupNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RetrieveRegistrationRequestType" nillable="true" type="tns:RetrieveRegistrationRequestType" />
+  <xs:complexType name="AmendRegistrationRequestType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonRequestType">
+        <xs:sequence>
+          <xs:element name="ChangeNumber" type="xs:long" />
+          <xs:element name="CollateralRegistrationAmendments" nillable="true" type="tns:CollateralRegistrationAmendments" />
+          <xs:element name="RegistrationNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RegistrationToken" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SecuredPartyGroupAccessCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SecuredPartyGroupNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AmendRegistrationRequestType" nillable="true" type="tns:AmendRegistrationRequestType" />
+  <xs:complexType name="CollateralRegistrationAmendments">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AdditionalAircraftDetails" nillable="true" type="tns:AdditionalAircraftCollateralDescriptionAmendments" />
+      <xs:element minOccurs="0" name="AdditionalVehicleDetails" nillable="true" type="tns:AdditionalVehicleCollateralDescriptionAmendments" />
+      <xs:element minOccurs="0" name="AreProceedsClaimed" nillable="true" type="tns:ExtendedBooleanType" />
+      <xs:element minOccurs="0" name="AttachmentIdsToAdd" nillable="true" type="tns:ArrayOfNewAttachment" />
+      <xs:element minOccurs="0" name="AttachmentIdsToRemove" nillable="true" type="tns:ArrayOfRemovedAttachment" />
+      <xs:element minOccurs="0" name="CollateralDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GivingOfNoticeIdentifier" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GrantorsToAdd" nillable="true" type="tns:ArrayOfNewGrantor" />
+      <xs:element minOccurs="0" name="GrantorsToRemove" nillable="true" type="tns:ArrayOfRemovedGrantor" />
+      <xs:element minOccurs="0" name="IsRegistrationEndTimeNotStated" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsSubordinate" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ProceedsClaimedDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RegistrationEndTime" nillable="true" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CollateralRegistrationAmendments" nillable="true" type="tns:CollateralRegistrationAmendments" />
+  <xs:complexType name="AdditionalAircraftCollateralDescriptionAmendments">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AircraftNationality" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AircraftNationalityCodeAndRegistrationMark" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AdditionalAircraftCollateralDescriptionAmendments" nillable="true" type="tns:AdditionalAircraftCollateralDescriptionAmendments" />
+  <xs:complexType name="AdditionalVehicleCollateralDescriptionAmendments">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="VehicleDescriptiveText" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VehicleRegistrationNumber" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AdditionalVehicleCollateralDescriptionAmendments" nillable="true" type="tns:AdditionalVehicleCollateralDescriptionAmendments" />
+  <xs:simpleType name="ExtendedBooleanType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unsupported" />
+      <xs:enumeration value="True" />
+      <xs:enumeration value="False" />
+      <xs:enumeration value="Unknown" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ExtendedBooleanType" nillable="true" type="tns:ExtendedBooleanType" />
+  <xs:complexType name="ArrayOfNewAttachment">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="NewAttachment" nillable="true" type="tns:NewAttachment" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfNewAttachment" nillable="true" type="tns:ArrayOfNewAttachment" />
+  <xs:complexType name="NewAttachment">
+    <xs:sequence>
+      <xs:element name="AttachmentId" type="xs:long" />
+      <xs:element name="NewAttachmentSequenceNumber" type="xs:short" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NewAttachment" nillable="true" type="tns:NewAttachment" />
+  <xs:complexType name="ArrayOfRemovedAttachment">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RemovedAttachment" nillable="true" type="tns:RemovedAttachment" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRemovedAttachment" nillable="true" type="tns:ArrayOfRemovedAttachment" />
+  <xs:complexType name="RemovedAttachment">
+    <xs:sequence>
+      <xs:element name="AttachmentId" type="xs:long" />
+      <xs:element name="RemovedAttachmentSequenceNumber" type="xs:short" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RemovedAttachment" nillable="true" type="tns:RemovedAttachment" />
+  <xs:complexType name="ArrayOfNewGrantor">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="NewGrantor" nillable="true" type="tns:NewGrantor" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfNewGrantor" nillable="true" type="tns:ArrayOfNewGrantor" />
+  <xs:complexType name="NewGrantor">
+    <xs:sequence>
+      <xs:element name="GrantorType" type="tns:GrantorType" />
+      <xs:element minOccurs="0" name="Individual" nillable="true" type="tns:NewGrantorIndividual" />
+      <xs:element name="NewGrantorSequenceNumber" type="xs:short" />
+      <xs:element minOccurs="0" name="Organisation" nillable="true" type="tns:GrantorOrganisation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NewGrantor" nillable="true" type="tns:NewGrantor" />
+  <xs:complexType name="NewGrantorIndividual">
+    <xs:sequence>
+      <xs:element name="DateOfBirth" type="xs:dateTime" />
+      <xs:element name="FamilyName" nillable="true" type="xs:string" />
+      <xs:element name="GivenNames" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NewGrantorIndividual" nillable="true" type="tns:NewGrantorIndividual" />
+  <xs:complexType name="GrantorOrganisation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="OrganisationName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OrganisationNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OrganisationNumberType" nillable="true" type="tns:OrganisationNumberType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GrantorOrganisation" nillable="true" type="tns:GrantorOrganisation" />
+  <xs:complexType name="ArrayOfRemovedGrantor">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RemovedGrantor" nillable="true" type="tns:RemovedGrantor" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRemovedGrantor" nillable="true" type="tns:ArrayOfRemovedGrantor" />
+  <xs:complexType name="RemovedGrantor">
+    <xs:sequence>
+      <xs:element name="GrantorType" type="tns:GrantorType" />
+      <xs:element minOccurs="0" name="Individual" nillable="true" type="tns:GrantorIndividual" />
+      <xs:element minOccurs="0" name="Organisation" nillable="true" type="tns:GrantorOrganisation" />
+      <xs:element name="RemovedGrantorSequenceNumber" type="xs:short" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RemovedGrantor" nillable="true" type="tns:RemovedGrantor" />
+  <xs:complexType name="GrantorIndividual">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DateOfBirth" nillable="true" type="xs:dateTime" />
+      <xs:element name="FamilyName" nillable="true" type="xs:string" />
+      <xs:element name="GivenNames" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GrantorIndividual" nillable="true" type="tns:GrantorIndividual" />
+  <xs:complexType name="DischargeRegistrationRequestType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonRequestType">
+        <xs:sequence>
+          <xs:element name="ChangeNumber" type="xs:long" />
+          <xs:element name="RegistrationNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RegistrationToken" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SecuredPartyGroupAccessCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SecuredPartyGroupNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DischargeRegistrationRequestType" nillable="true" type="tns:DischargeRegistrationRequestType" />
+  <xs:complexType name="ResetRegistrationTokenRequestType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonRequestType">
+        <xs:sequence>
+          <xs:element name="RegistrationNumber" nillable="true" type="xs:string" />
+          <xs:element name="SecuredPartyGroupAccessCode" nillable="true" type="xs:string" />
+          <xs:element name="SecuredPartyGroupNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ResetRegistrationTokenRequestType" nillable="true" type="tns:ResetRegistrationTokenRequestType" />
+  <xs:complexType name="ReissueVerificationStatementRequestType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonRequestType">
+        <xs:sequence>
+          <xs:element name="ChangeNumber" type="xs:long" />
+          <xs:element name="RegistrationNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RegistrationToken" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SecuredPartyGroupAccessCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SecuredPartyGroupNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ReissueVerificationStatementRequestType" nillable="true" type="tns:ReissueVerificationStatementRequestType" />
+  <xs:complexType name="TransferSingleRegistrationRequestType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonRequestType">
+        <xs:sequence>
+          <xs:element name="RegistrationNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RegistrationToken" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TransferFromSecuredPartyGroupAccessCode" nillable="true" type="xs:string" />
+          <xs:element name="TransferFromSecuredPartyGroupNumber" nillable="true" type="xs:string" />
+          <xs:element name="TransferToSecuredPartyGroupNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="TransferSingleRegistrationRequestType" nillable="true" type="tns:TransferSingleRegistrationRequestType" />
+  <xs:complexType name="TransferAllRegistrationsRequestType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonRequestType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CompletionNotificationEmailAddress" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TransferFromSecuredPartyGroupAccessCode" nillable="true" type="xs:string" />
+          <xs:element name="TransferFromSecuredPartyGroupNumber" nillable="true" type="xs:string" />
+          <xs:element name="TransferToSecuredPartyGroupNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="TransferAllRegistrationsRequestType" nillable="true" type="tns:TransferAllRegistrationsRequestType" />
+  <xs:complexType name="UploadRegistrationAttachmentRequestType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonRequestType">
+        <xs:sequence>
+          <xs:element name="Attachment" nillable="true" type="xs:base64Binary" />
+          <xs:element minOccurs="0" name="AttachmentDescription" nillable="true" type="xs:string" />
+          <xs:element name="AttachmentFileName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UploadRegistrationAttachmentRequestType" nillable="true" type="tns:UploadRegistrationAttachmentRequestType" />
+  <xs:complexType name="RetrieveRegistrationAttachmentRequestType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonRequestType">
+        <xs:sequence>
+          <xs:element name="AttachmentId" type="xs:long" />
+          <xs:element name="RegistrationNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RegistrationToken" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SecuredPartyGroupAccessCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SecuredPartyGroupNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RetrieveRegistrationAttachmentRequestType" nillable="true" type="tns:RetrieveRegistrationAttachmentRequestType" />
+  <xs:complexType name="CreateSecuredPartyGroupRequestType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonRequestType">
+        <xs:sequence>
+          <xs:element name="AddressForService" nillable="true" type="tns:NewAddressForService" />
+          <xs:element name="SecuredParties" nillable="true" type="tns:ArrayOfNewSecuredParty" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CreateSecuredPartyGroupRequestType" nillable="true" type="tns:CreateSecuredPartyGroupRequestType" />
+  <xs:complexType name="ArrayOfNewSecuredParty">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="NewSecuredParty" nillable="true" type="tns:NewSecuredParty" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfNewSecuredParty" nillable="true" type="tns:ArrayOfNewSecuredParty" />
+  <xs:complexType name="NewSecuredParty">
+    <xs:sequence>
+      <xs:element name="ContactName" nillable="true" type="xs:string" />
+      <xs:element name="ContactPhone" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Individual" nillable="true" type="tns:SecuredPartyIndividual" />
+      <xs:element name="MailingAddress" nillable="true" type="tns:NewAddress" />
+      <xs:element name="NewSecuredPartySequenceNumber" type="xs:short" />
+      <xs:element minOccurs="0" name="Organisation" nillable="true" type="tns:SecuredPartyOrganisation" />
+      <xs:element name="SecuredPartyType" type="tns:SecuredPartyType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NewSecuredParty" nillable="true" type="tns:NewSecuredParty" />
+  <xs:simpleType name="NewRegistrationCollateralType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Consumer" />
+      <xs:enumeration value="Commercial" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="NewRegistrationCollateralType" nillable="true" type="tns:NewRegistrationCollateralType" />
+  <xs:complexType name="ArrayOfNewCollateralRegistration">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="NewCollateralRegistration" nillable="true" type="tns:NewCollateralRegistration" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfNewCollateralRegistration" nillable="true" type="tns:ArrayOfNewCollateralRegistration" />
+  <xs:complexType name="NewCollateralRegistration">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AreAssetsSubjectToControl" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="AreProceedsClaimed" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Attachments" nillable="true" type="tns:ArrayOfNewAttachment" />
+      <xs:element name="CollateralClassType" type="tns:NewRegistrationCollateralClassType" />
+      <xs:element minOccurs="0" name="CollateralDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EarlierRegistrationNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GivingOfNoticeIdentifier" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsInventory" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsPMSI" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsRegistrationEndTimeNotStated" nillable="true" type="xs:boolean" />
+      <xs:element name="IsSubordinate" type="xs:boolean" />
+      <xs:element name="NewRegistrationSequenceNumber" type="xs:short" />
+      <xs:element minOccurs="0" name="ProceedsClaimedDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RegistrationEndTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SerialNumberDetails" nillable="true" type="tns:NewRegistrationSerialisedCollateralDescription" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NewCollateralRegistration" nillable="true" type="tns:NewCollateralRegistration" />
+  <xs:simpleType name="NewRegistrationCollateralClassType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Aircraft" />
+      <xs:enumeration value="MotorVehicle" />
+      <xs:enumeration value="Watercraft" />
+      <xs:enumeration value="AircraftEngine" />
+      <xs:enumeration value="Airframe" />
+      <xs:enumeration value="Helicopter" />
+      <xs:enumeration value="SmallAircraft" />
+      <xs:enumeration value="Agriculture" />
+      <xs:enumeration value="Crops" />
+      <xs:enumeration value="Livestock" />
+      <xs:enumeration value="OtherGoods" />
+      <xs:enumeration value="ChattelPaper" />
+      <xs:enumeration value="Currency" />
+      <xs:enumeration value="DocumentOfTitle" />
+      <xs:enumeration value="IntermediatedSecurity" />
+      <xs:enumeration value="InvestmentInstrument" />
+      <xs:enumeration value="NegotiableInstrument" />
+      <xs:enumeration value="Account" />
+      <xs:enumeration value="GeneralIntangible" />
+      <xs:enumeration value="IntellectualProperty" />
+      <xs:enumeration value="CircuitLayout" />
+      <xs:enumeration value="Copyright" />
+      <xs:enumeration value="Patent" />
+      <xs:enumeration value="Design" />
+      <xs:enumeration value="TradeMark" />
+      <xs:enumeration value="PlantBreedersRight" />
+      <xs:enumeration value="AllPapNoExcept" />
+      <xs:enumeration value="AllPapWithExcept" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="NewRegistrationCollateralClassType" nillable="true" type="tns:NewRegistrationCollateralClassType" />
+  <xs:complexType name="NewRegistrationSerialisedCollateralDescription">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AdditionalAircraftDetails" nillable="true" type="tns:AdditionalAircraftCollateralDescription" />
+      <xs:element minOccurs="0" name="AdditionalVehicleDetails" nillable="true" type="tns:AdditionalVehicleCollateralDescription" />
+      <xs:element name="SerialNumber" nillable="true" type="xs:string" />
+      <xs:element name="SerialNumberType" type="tns:NewRegistrationSerialNumberType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NewRegistrationSerialisedCollateralDescription" nillable="true" type="tns:NewRegistrationSerialisedCollateralDescription" />
+  <xs:complexType name="AdditionalAircraftCollateralDescription">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AircraftNationality" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AircraftNationalityCodeAndRegistrationMark" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ManufacturersModel" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ManufacturersName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AdditionalAircraftCollateralDescription" nillable="true" type="tns:AdditionalAircraftCollateralDescription" />
+  <xs:complexType name="AdditionalVehicleCollateralDescription">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="VehicleDescriptiveText" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VehicleRegistrationNumber" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AdditionalVehicleCollateralDescription" nillable="true" type="tns:AdditionalVehicleCollateralDescription" />
+  <xs:simpleType name="NewRegistrationSerialNumberType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="VIN" />
+      <xs:enumeration value="ChassisNumber" />
+      <xs:enumeration value="MotorVehicleManufacturersNumber" />
+      <xs:enumeration value="HIN" />
+      <xs:enumeration value="OfficialNumber" />
+      <xs:enumeration value="AircraftEngineManufacturersNumber" />
+      <xs:enumeration value="AirframeManufacturersNumber" />
+      <xs:enumeration value="HelicopterManufacturersNumber" />
+      <xs:enumeration value="AircraftNationalityCodeAndRegistrationMark" />
+      <xs:enumeration value="PatentNumber" />
+      <xs:enumeration value="TradeMarkNumber" />
+      <xs:enumeration value="DesignNumber" />
+      <xs:enumeration value="PlantBreedersRightNumber" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="NewRegistrationSerialNumberType" nillable="true" type="tns:NewRegistrationSerialNumberType" />
+  <xs:complexType name="CreateRegistrationsResponseType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonResponseType">
+        <xs:sequence>
+          <xs:element name="Registrations" nillable="true" type="tns:ArrayOfRegistrationInfo" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CreateRegistrationsResponseType" nillable="true" type="tns:CreateRegistrationsResponseType" />
+  <xs:complexType name="CommonResponseType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonB2GMessageType">
+        <xs:sequence>
+          <xs:element name="PpsrRequestMessageId" type="xs:long" />
+          <xs:element name="RequestProcessedByEnvironment" nillable="true" type="xs:string" />
+          <xs:element name="RequestProcessedDateTime" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CommonResponseType" nillable="true" type="tns:CommonResponseType" />
+  <xs:complexType name="TransferAllRegistrationsResponseType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonResponseType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="NumberOfCurrentRegistrations" type="xs:int" />
+          <xs:element name="PpsrTransactionId" type="xs:long" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="TransferAllRegistrationsResponseType" nillable="true" type="tns:TransferAllRegistrationsResponseType" />
+  <xs:complexType name="RetrieveSearchResultRegistrationAttachmentResponseType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonResponseType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Attachment" nillable="true" type="xs:base64Binary" />
+          <xs:element name="AttachmentFileName" nillable="true" type="xs:string" />
+          <xs:element name="PpsrTransactionId" type="xs:long" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RetrieveSearchResultRegistrationAttachmentResponseType" nillable="true" type="tns:RetrieveSearchResultRegistrationAttachmentResponseType" />
+  <xs:complexType name="SearchByGrantorResponseType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonResponseType">
+        <xs:sequence>
+          <xs:element name="PpsrTransactionId" type="xs:long" />
+          <xs:element name="SearchCriteria" nillable="true" type="tns:SearchByGrantorSearchCriteria" />
+          <xs:element name="SearchResult" nillable="true" type="tns:SearchByGrantorSearchResult" />
+          <xs:element name="SearchSummary" nillable="true" type="tns:SearchSummary" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SearchByGrantorResponseType" nillable="true" type="tns:SearchByGrantorResponseType" />
+  <xs:complexType name="SearchByGrantorSearchResult">
+    <xs:sequence>
+      <xs:element name="FilterNumber" type="xs:int" />
+      <xs:element minOccurs="0" name="GrantorOrganisationSearchCriteriaVerificationDetail" nillable="true" type="tns:GrantorOrganisationWithVerificationStatus" />
+      <xs:element name="MaximumNumberOfReturnedRegistrationsPerRetrieve" type="xs:int" />
+      <xs:element name="SearchResultSummary" nillable="true" type="tns:SearchByGrantorSearchResultSummary" />
+      <xs:element minOccurs="0" name="TransitionalPeriodMessage" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SearchByGrantorSearchResult" nillable="true" type="tns:SearchByGrantorSearchResult" />
+  <xs:complexType name="GrantorOrganisationWithVerificationStatus">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="OrganisationName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OrganisationNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OrganisationNumberType" nillable="true" type="tns:OrganisationNumberType" />
+      <xs:element minOccurs="0" name="OrganisationNumberVerificationStatus" nillable="true" type="tns:IdentifierVerificationStatusType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GrantorOrganisationWithVerificationStatus" nillable="true" type="tns:GrantorOrganisationWithVerificationStatus" />
+  <xs:simpleType name="IdentifierVerificationStatusType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unsupported" />
+      <xs:enumeration value="Found" />
+      <xs:enumeration value="NotFound" />
+      <xs:enumeration value="NotVerified" />
+      <xs:enumeration value="NotPerformed" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="IdentifierVerificationStatusType" nillable="true" type="tns:IdentifierVerificationStatusType" />
+  <xs:complexType name="SearchByGrantorSearchResultSummary">
+    <xs:sequence>
+      <xs:element name="CollateralClassSummary" nillable="true" type="tns:ArrayOfCollateralClassSearchSummaryDetail" />
+      <xs:element name="CollateralTypeSummary" nillable="true" type="tns:ArrayOfCollateralTypeSearchSummaryDetail" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SearchByGrantorSearchResultSummary" nillable="true" type="tns:SearchByGrantorSearchResultSummary" />
+  <xs:complexType name="ArrayOfCollateralClassSearchSummaryDetail">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CollateralClassSearchSummaryDetail" nillable="true" type="tns:CollateralClassSearchSummaryDetail" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCollateralClassSearchSummaryDetail" nillable="true" type="tns:ArrayOfCollateralClassSearchSummaryDetail" />
+  <xs:complexType name="CollateralClassSearchSummaryDetail">
+    <xs:sequence>
+      <xs:element name="CollateralClass" type="tns:CollateralClassFilterCriteriaType" />
+      <xs:element name="CollateralClassResultCount" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CollateralClassSearchSummaryDetail" nillable="true" type="tns:CollateralClassSearchSummaryDetail" />
+  <xs:complexType name="ArrayOfCollateralTypeSearchSummaryDetail">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CollateralTypeSearchSummaryDetail" nillable="true" type="tns:CollateralTypeSearchSummaryDetail" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCollateralTypeSearchSummaryDetail" nillable="true" type="tns:ArrayOfCollateralTypeSearchSummaryDetail" />
+  <xs:complexType name="CollateralTypeSearchSummaryDetail">
+    <xs:sequence>
+      <xs:element name="CollateralType" type="tns:CollateralType" />
+      <xs:element name="CollateralTypeResultCount" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CollateralTypeSearchSummaryDetail" nillable="true" type="tns:CollateralTypeSearchSummaryDetail" />
+  <xs:complexType name="SearchSummary">
+    <xs:sequence>
+      <xs:element name="AccessToSearchResultExpiryTime" type="xs:dateTime" />
+      <xs:element name="ResultCount" type="xs:int" />
+      <xs:element name="SearchExecutedDateTime" type="xs:dateTime" />
+      <xs:element name="SearchNumber" nillable="true" type="xs:string" />
+      <xs:element name="SearchType" type="tns:SearchType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SearchSummary" nillable="true" type="tns:SearchSummary" />
+  <xs:simpleType name="SearchType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unsupported" />
+      <xs:enumeration value="SearchByRegistrationNumber" />
+      <xs:enumeration value="SearchBySerialNumber" />
+      <xs:enumeration value="SearchByGrantor" />
+      <xs:enumeration value="SearchByGrantorAndEventDateRange" />
+      <xs:enumeration value="OrdinalSearch" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="SearchType" nillable="true" type="tns:SearchType" />
+  <xs:complexType name="SearchByRegistrationNumberResponseType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonResponseType">
+        <xs:sequence>
+          <xs:element name="PpsrTransactionId" type="xs:long" />
+          <xs:element name="SearchCriteria" nillable="true" type="tns:SearchByRegistrationNumberSearchCriteria" />
+          <xs:element name="SearchResult" nillable="true" type="tns:SearchByRegistrationNumberSearchResult" />
+          <xs:element name="SearchSummary" nillable="true" type="tns:SearchSummary" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SearchByRegistrationNumberResponseType" nillable="true" type="tns:SearchByRegistrationNumberResponseType" />
+  <xs:complexType name="SearchByRegistrationNumberSearchResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ResultDetail" nillable="true" type="tns:ResultDetail" />
+      <xs:element name="SearchResultRetrievedDateTime" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SearchByRegistrationNumberSearchResult" nillable="true" type="tns:SearchByRegistrationNumberSearchResult" />
+  <xs:complexType name="ResultDetail">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ChangeHistory" nillable="true" type="tns:ChangeHistory" />
+      <xs:element minOccurs="0" name="RegistrationDetail" nillable="true" type="tns:RegistrationDetail" />
+      <xs:element minOccurs="0" name="RestrictionDetail" nillable="true" type="tns:RestrictionDetail" />
+      <xs:element minOccurs="0" name="ResultSequenceNumber" nillable="true" type="xs:short" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ResultDetail" nillable="true" type="tns:ResultDetail" />
+  <xs:complexType name="ChangeHistory">
+    <xs:sequence>
+      <xs:element name="ChangeDetails" nillable="true" type="tns:ArrayOfChangeDetail" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ChangeHistory" nillable="true" type="tns:ChangeHistory" />
+  <xs:complexType name="ArrayOfChangeDetail">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ChangeDetail" nillable="true" type="tns:ChangeDetail" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfChangeDetail" nillable="true" type="tns:ArrayOfChangeDetail" />
+  <xs:complexType name="ChangeDetail">
+    <xs:sequence>
+      <xs:element name="ChangeNumber" type="xs:long" />
+      <xs:element minOccurs="0" name="ChangeType" type="tns:ChangeType" />
+      <xs:element minOccurs="0" name="RegistrationChangeTime" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ChangeDetail" nillable="true" type="tns:ChangeDetail" />
+  <xs:simpleType name="ChangeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unsupported" />
+      <xs:enumeration value="Create" />
+      <xs:enumeration value="Amend" />
+      <xs:enumeration value="Discharge" />
+      <xs:enumeration value="Remove" />
+      <xs:enumeration value="Reinstate" />
+      <xs:enumeration value="AddressForServiceChange" />
+      <xs:enumeration value="Transfer" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ChangeType" nillable="true" type="tns:ChangeType" />
+  <xs:complexType name="RegistrationDetail">
+    <xs:sequence>
+      <xs:element name="AddressForService" nillable="true" type="tns:AddressForServiceSearchDetail" />
+      <xs:element minOccurs="0" name="AreAssetsSubjectToControl" nillable="true" type="tns:ExtendedBooleanType" />
+      <xs:element minOccurs="0" name="AreProceedsClaimed" nillable="true" type="tns:ExtendedBooleanType" />
+      <xs:element minOccurs="0" name="Attachments" nillable="true" type="tns:ArrayOfAttachmentDetail" />
+      <xs:element name="ChangeNumber" type="xs:long" />
+      <xs:element name="CollateralClassDescription" nillable="true" type="xs:string" />
+      <xs:element name="CollateralClassType" type="tns:CollateralClassType" />
+      <xs:element minOccurs="0" name="CollateralDescription" nillable="true" type="xs:string" />
+      <xs:element name="CollateralType" type="tns:CollateralType" />
+      <xs:element minOccurs="0" name="EarlierRegistrationNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GivingOfNoticeIdentifier" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Grantors" nillable="true" type="tns:ArrayOfGrantorSearchDetail" />
+      <xs:element minOccurs="0" name="IsInventory" nillable="true" type="tns:ExtendedBooleanType" />
+      <xs:element name="IsMigrated" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsPMSI" nillable="true" type="tns:ExtendedBooleanType" />
+      <xs:element name="IsSecurityInterestRegistrationKind" type="xs:boolean" />
+      <xs:element name="IsSubordinate" type="xs:boolean" />
+      <xs:element name="IsTransitional" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MigrationDetail" nillable="true" type="tns:MigrationDetail" />
+      <xs:element minOccurs="0" name="ProceedsClaimedDescription" nillable="true" type="xs:string" />
+      <xs:element name="RegistrationChangeTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="RegistrationEndTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="RegistrationKind" nillable="true" type="xs:string" />
+      <xs:element name="RegistrationNumber" nillable="true" type="xs:string" />
+      <xs:element name="RegistrationStartTime" type="xs:dateTime" />
+      <xs:element name="SecuredParties" nillable="true" type="tns:ArrayOfCollateralRegistrationSecuredParty" />
+      <xs:element minOccurs="0" name="SerialNumberDetails" nillable="true" type="tns:SerialisedCollateralDescription" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RegistrationDetail" nillable="true" type="tns:RegistrationDetail" />
+  <xs:complexType name="AddressForServiceSearchDetail">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Addressee" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FaxNumber" nillable="true" type="xs:string" />
+      <xs:element name="MailingAddress" nillable="true" type="tns:Address" />
+      <xs:element minOccurs="0" name="PhysicalAddress" nillable="true" type="tns:Address" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AddressForServiceSearchDetail" nillable="true" type="tns:AddressForServiceSearchDetail" />
+  <xs:complexType name="Address">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CountryName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ISO3166CountryCode" nillable="true" type="xs:string" />
+      <xs:element name="Line1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Line2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Line3" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Locality" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Postcode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="State" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Address" nillable="true" type="tns:Address" />
+  <xs:complexType name="ArrayOfAttachmentDetail">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AttachmentDetail" nillable="true" type="tns:AttachmentDetail" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAttachmentDetail" nillable="true" type="tns:ArrayOfAttachmentDetail" />
+  <xs:complexType name="AttachmentDetail">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AttachmentDescription" nillable="true" type="xs:string" />
+      <xs:element name="AttachmentFileName" nillable="true" type="xs:string" />
+      <xs:element name="AttachmentFileSizeBytes" type="xs:int" />
+      <xs:element name="AttachmentId" type="xs:long" />
+      <xs:element name="IsMigratedAttachment" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AttachmentDetail" nillable="true" type="tns:AttachmentDetail" />
+  <xs:simpleType name="CollateralClassType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unsupported" />
+      <xs:enumeration value="Unknown" />
+      <xs:enumeration value="MotorVehicle" />
+      <xs:enumeration value="Watercraft" />
+      <xs:enumeration value="Aircraft" />
+      <xs:enumeration value="AircraftEngine" />
+      <xs:enumeration value="Airframe" />
+      <xs:enumeration value="Helicopter" />
+      <xs:enumeration value="SmallAircraft" />
+      <xs:enumeration value="Agriculture" />
+      <xs:enumeration value="Crops" />
+      <xs:enumeration value="Livestock" />
+      <xs:enumeration value="OtherGoods" />
+      <xs:enumeration value="ChattelPaper" />
+      <xs:enumeration value="Currency" />
+      <xs:enumeration value="DocumentOfTitle" />
+      <xs:enumeration value="IntermediatedSecurity" />
+      <xs:enumeration value="InvestmentInstrument" />
+      <xs:enumeration value="NegotiableInstrument" />
+      <xs:enumeration value="Account" />
+      <xs:enumeration value="GeneralIntangible" />
+      <xs:enumeration value="IntellectualProperty" />
+      <xs:enumeration value="CircuitLayout" />
+      <xs:enumeration value="Copyright" />
+      <xs:enumeration value="Patent" />
+      <xs:enumeration value="Design" />
+      <xs:enumeration value="TradeMark" />
+      <xs:enumeration value="PlantBreedersRight" />
+      <xs:enumeration value="AllPapNoExcept" />
+      <xs:enumeration value="AllPapWithExcept" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="CollateralClassType" nillable="true" type="tns:CollateralClassType" />
+  <xs:complexType name="ArrayOfGrantorSearchDetail">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="GrantorSearchDetail" nillable="true" type="tns:GrantorSearchDetail" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGrantorSearchDetail" nillable="true" type="tns:ArrayOfGrantorSearchDetail" />
+  <xs:complexType name="GrantorSearchDetail">
+    <xs:sequence>
+      <xs:element name="GrantorType" type="tns:GrantorType" />
+      <xs:element minOccurs="0" name="Individual" nillable="true" type="tns:GrantorIndividualSearchDetail" />
+      <xs:element minOccurs="0" name="Organisation" nillable="true" type="tns:GrantorOrganisation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GrantorSearchDetail" nillable="true" type="tns:GrantorSearchDetail" />
+  <xs:complexType name="GrantorIndividualSearchDetail">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FamilyName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GivenNames" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GrantorIndividualSearchDetail" nillable="true" type="tns:GrantorIndividualSearchDetail" />
+  <xs:complexType name="MigrationDetail">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="OriginalStartDate" type="xs:dateTime" />
+      <xs:element name="SourceRegister" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MigrationDetail" nillable="true" type="tns:MigrationDetail" />
+  <xs:complexType name="ArrayOfCollateralRegistrationSecuredParty">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CollateralRegistrationSecuredParty" nillable="true" type="tns:CollateralRegistrationSecuredParty" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCollateralRegistrationSecuredParty" nillable="true" type="tns:ArrayOfCollateralRegistrationSecuredParty" />
+  <xs:complexType name="CollateralRegistrationSecuredParty">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Individual" nillable="true" type="tns:SecuredPartyIndividual" />
+      <xs:element minOccurs="0" name="Organisation" nillable="true" type="tns:SecuredPartyOrganisation" />
+      <xs:element name="SecuredPartyType" type="tns:SecuredPartyType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CollateralRegistrationSecuredParty" nillable="true" type="tns:CollateralRegistrationSecuredParty" />
+  <xs:complexType name="SerialisedCollateralDescription">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AdditionalAircraftDetails" nillable="true" type="tns:AdditionalAircraftCollateralDescription" />
+      <xs:element minOccurs="0" name="AdditionalVehicleDetails" nillable="true" type="tns:AdditionalVehicleCollateralDescription" />
+      <xs:element name="SerialNumber" nillable="true" type="xs:string" />
+      <xs:element name="SerialNumberType" type="tns:SerialNumberType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SerialisedCollateralDescription" nillable="true" type="tns:SerialisedCollateralDescription" />
+  <xs:simpleType name="SerialNumberType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unsupported" />
+      <xs:enumeration value="UnknownMotorVehicleIdentifier" />
+      <xs:enumeration value="VIN" />
+      <xs:enumeration value="ChassisNumber" />
+      <xs:enumeration value="MotorVehicleManufacturersNumber" />
+      <xs:enumeration value="HIN" />
+      <xs:enumeration value="OfficialNumber" />
+      <xs:enumeration value="AircraftEngineManufacturersNumber" />
+      <xs:enumeration value="AirframeManufacturersNumber" />
+      <xs:enumeration value="HelicopterManufacturersNumber" />
+      <xs:enumeration value="AircraftNationalityCodeAndRegistrationMark" />
+      <xs:enumeration value="PatentNumber" />
+      <xs:enumeration value="TradeMarkNumber" />
+      <xs:enumeration value="DesignNumber" />
+      <xs:enumeration value="PlantBreedersRightNumber" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="SerialNumberType" nillable="true" type="tns:SerialNumberType" />
+  <xs:complexType name="RestrictionDetail">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IsAccessRestricted" nillable="true" type="xs:boolean" />
+      <xs:element name="IsArchived" type="xs:boolean" />
+      <xs:element name="IsRemoved" type="xs:boolean" />
+      <xs:element name="RegistrationNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RemovalDetail" nillable="true" type="tns:RemovalDetail" />
+      <xs:element minOccurs="0" name="RestrictedAccessDetail" nillable="true" type="tns:RestrictedAccessDetail" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RestrictionDetail" nillable="true" type="tns:RestrictionDetail" />
+  <xs:complexType name="RemovalDetail">
+    <xs:sequence>
+      <xs:element name="RemovalReasonDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RemovalReasonFurtherDetails" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RemovalDetail" nillable="true" type="tns:RemovalDetail" />
+  <xs:complexType name="RestrictedAccessDetail">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="RegistrationEndTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="RestrictedAccessReasonDescription" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RestrictedAccessDetail" nillable="true" type="tns:RestrictedAccessDetail" />
+  <xs:complexType name="DeleteReportResponseType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonResponseType">
+        <xs:sequence>
+          <xs:element name="PpsrTransactionId" type="xs:long" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DeleteReportResponseType" nillable="true" type="tns:DeleteReportResponseType" />
+  <xs:complexType name="RetrieveRegistrationResponseType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonResponseType">
+        <xs:sequence>
+          <xs:element name="CollateralRegistration" nillable="true" type="tns:CollateralRegistration" />
+          <xs:element name="PpsrTransactionId" type="xs:long" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RetrieveRegistrationResponseType" nillable="true" type="tns:RetrieveRegistrationResponseType" />
+  <xs:complexType name="CollateralRegistration">
+    <xs:sequence>
+      <xs:element name="AddressForService" nillable="true" type="tns:AddressForService" />
+      <xs:element minOccurs="0" name="AreAssetsSubjectToControl" nillable="true" type="tns:ExtendedBooleanType" />
+      <xs:element minOccurs="0" name="AreProceedsClaimed" nillable="true" type="tns:ExtendedBooleanType" />
+      <xs:element name="Attachments" nillable="true" type="tns:ArrayOfAttachmentDetail" />
+      <xs:element name="ChangeNumber" type="xs:long" />
+      <xs:element name="CollateralClassType" type="tns:CollateralClassType" />
+      <xs:element minOccurs="0" name="CollateralDescription" nillable="true" type="xs:string" />
+      <xs:element name="CollateralType" type="tns:CollateralType" />
+      <xs:element minOccurs="0" name="EarlierRegistrationNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GivingOfNoticeIdentifier" nillable="true" type="xs:string" />
+      <xs:element name="Grantors" nillable="true" type="tns:ArrayOfGrantor" />
+      <xs:element minOccurs="0" name="IsInventory" nillable="true" type="tns:ExtendedBooleanType" />
+      <xs:element name="IsMigrated" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsPMSI" nillable="true" type="tns:ExtendedBooleanType" />
+      <xs:element minOccurs="0" name="IsRegistrationEndTimeNotStated" nillable="true" type="xs:boolean" />
+      <xs:element name="IsSecurityInterestRegistrationKind" type="xs:boolean" />
+      <xs:element name="IsSubordinate" type="xs:boolean" />
+      <xs:element name="IsTransitional" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MigrationDetail" nillable="true" type="tns:MigrationDetail" />
+      <xs:element minOccurs="0" name="ProceedsClaimedDescription" nillable="true" type="xs:string" />
+      <xs:element name="RegistrationChangeTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="RegistrationEndTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="RegistrationKind" nillable="true" type="xs:string" />
+      <xs:element name="RegistrationNumber" nillable="true" type="xs:string" />
+      <xs:element name="RegistrationStartTime" type="xs:dateTime" />
+      <xs:element name="SecuredPartyGroup" nillable="true" type="tns:CollateralRegistrationSecuredPartyGroup" />
+      <xs:element minOccurs="0" name="SerialNumberDetails" nillable="true" type="tns:SerialisedCollateralDescription" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CollateralRegistration" nillable="true" type="tns:CollateralRegistration" />
+  <xs:complexType name="AddressForService">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Addressee" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="B2GAccountCustomerName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="B2GAccountCustomerNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FaxNumber" nillable="true" type="xs:string" />
+      <xs:element name="MailingAddress" nillable="true" type="tns:Address" />
+      <xs:element minOccurs="0" name="PhysicalAddress" nillable="true" type="tns:Address" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AddressForService" nillable="true" type="tns:AddressForService" />
+  <xs:complexType name="ArrayOfGrantor">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Grantor" nillable="true" type="tns:Grantor" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGrantor" nillable="true" type="tns:ArrayOfGrantor" />
+  <xs:complexType name="Grantor">
+    <xs:sequence>
+      <xs:element name="GrantorType" type="tns:GrantorType" />
+      <xs:element minOccurs="0" name="Individual" nillable="true" type="tns:GrantorIndividual" />
+      <xs:element minOccurs="0" name="Organisation" nillable="true" type="tns:GrantorOrganisation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Grantor" nillable="true" type="tns:Grantor" />
+  <xs:complexType name="CollateralRegistrationSecuredPartyGroup">
+    <xs:sequence>
+      <xs:element name="SecuredParties" nillable="true" type="tns:ArrayOfCollateralRegistrationSecuredParty" />
+      <xs:element name="SecuredPartyGroupNumber" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CollateralRegistrationSecuredPartyGroup" nillable="true" type="tns:CollateralRegistrationSecuredPartyGroup" />
+  <xs:complexType name="AmendRegistrationResponseType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonResponseType">
+        <xs:sequence>
+          <xs:element name="ChangeNumber" type="xs:long" />
+          <xs:element name="IsRegistrationEndTimeChanged" type="xs:boolean" />
+          <xs:element name="PpsrTransactionId" type="xs:long" />
+          <xs:element name="RegistrationChangeTime" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="RegistrationEndTime" nillable="true" type="xs:dateTime" />
+          <xs:element name="RegistrationNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AmendRegistrationResponseType" nillable="true" type="tns:AmendRegistrationResponseType" />
+  <xs:complexType name="DischargeRegistrationResponseType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonResponseType">
+        <xs:sequence>
+          <xs:element name="ChangeNumber" type="xs:long" />
+          <xs:element name="PpsrTransactionId" type="xs:long" />
+          <xs:element name="RegistrationEndTime" type="xs:dateTime" />
+          <xs:element name="RegistrationNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DischargeRegistrationResponseType" nillable="true" type="tns:DischargeRegistrationResponseType" />
+  <xs:complexType name="ResetRegistrationTokenResponseType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonResponseType">
+        <xs:sequence>
+          <xs:element name="PpsrTransactionId" type="xs:long" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ResetRegistrationTokenResponseType" nillable="true" type="tns:ResetRegistrationTokenResponseType" />
+  <xs:complexType name="ReissueVerificationStatementResponseType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonResponseType">
+        <xs:sequence>
+          <xs:element name="PpsrTransactionId" type="xs:long" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ReissueVerificationStatementResponseType" nillable="true" type="tns:ReissueVerificationStatementResponseType" />
+  <xs:complexType name="TransferSingleRegistrationResponseType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonResponseType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ChangeNumber" type="xs:long" />
+          <xs:element name="IsAccessIsRestricted" type="xs:boolean" />
+          <xs:element name="PpsrTransactionId" type="xs:long" />
+          <xs:element name="RegistrationChangeTime" type="xs:dateTime" />
+          <xs:element name="RegistrationNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="TransferSingleRegistrationResponseType" nillable="true" type="tns:TransferSingleRegistrationResponseType" />
+  <xs:complexType name="UploadRegistrationAttachmentResponseType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonResponseType">
+        <xs:sequence>
+          <xs:element name="AttachmentId" type="xs:long" />
+          <xs:element name="PpsrTransactionId" type="xs:long" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UploadRegistrationAttachmentResponseType" nillable="true" type="tns:UploadRegistrationAttachmentResponseType" />
+  <xs:complexType name="RetrieveRegistrationAttachmentResponseType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonResponseType">
+        <xs:sequence>
+          <xs:element name="Attachment" nillable="true" type="xs:base64Binary" />
+          <xs:element name="AttachmentFileName" nillable="true" type="xs:string" />
+          <xs:element name="PpsrTransactionId" type="xs:long" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RetrieveRegistrationAttachmentResponseType" nillable="true" type="tns:RetrieveRegistrationAttachmentResponseType" />
+  <xs:complexType name="CreateSecuredPartyGroupResponseType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonResponseType">
+        <xs:sequence>
+          <xs:element name="PpsrTransactionId" type="xs:long" />
+          <xs:element name="SecuredPartyGroupNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CreateSecuredPartyGroupResponseType" nillable="true" type="tns:CreateSecuredPartyGroupResponseType" />
+  <xs:complexType name="RetrieveSecuredPartyGroupResponseType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonResponseType">
+        <xs:sequence>
+          <xs:element name="PpsrTransactionId" type="xs:long" />
+          <xs:element name="SecuredPartyGroup" nillable="true" type="tns:SecuredPartyGroupWithVerification" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RetrieveSecuredPartyGroupResponseType" nillable="true" type="tns:RetrieveSecuredPartyGroupResponseType" />
+  <xs:complexType name="SecuredPartyGroupWithVerification">
+    <xs:sequence>
+      <xs:element name="AddressForService" nillable="true" type="tns:AddressForService" />
+      <xs:element name="SecuredParties" nillable="true" type="tns:ArrayOfSecuredPartyWithVerification" />
+      <xs:element name="SecuredPartyGroupNumber" nillable="true" type="xs:string" />
+      <xs:element name="SecuredPartyGroupVersionId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SecuredPartyGroupWithVerification" nillable="true" type="tns:SecuredPartyGroupWithVerification" />
+  <xs:complexType name="ArrayOfSecuredPartyWithVerification">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SecuredPartyWithVerification" nillable="true" type="tns:SecuredPartyWithVerification" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSecuredPartyWithVerification" nillable="true" type="tns:ArrayOfSecuredPartyWithVerification" />
+  <xs:complexType name="SecuredPartyWithVerification">
+    <xs:sequence>
+      <xs:element name="ContactName" nillable="true" type="xs:string" />
+      <xs:element name="ContactPhone" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Individual" nillable="true" type="tns:SecuredPartyIndividual" />
+      <xs:element name="MailingAddress" nillable="true" type="tns:Address" />
+      <xs:element minOccurs="0" name="Organisation" nillable="true" type="tns:SecuredPartyOrganisationWithVerification" />
+      <xs:element name="SecuredPartyType" type="tns:SecuredPartyType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SecuredPartyWithVerification" nillable="true" type="tns:SecuredPartyWithVerification" />
+  <xs:complexType name="SecuredPartyOrganisationWithVerification">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="OrganisationName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OrganisationNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OrganisationNumberType" nillable="true" type="tns:OrganisationNumberType" />
+      <xs:element minOccurs="0" name="OrganisationNumberVerificationDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="OrganisationNumberVerificationStatus" nillable="true" type="tns:IdentifierVerificationStatusType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SecuredPartyOrganisationWithVerification" nillable="true" type="tns:SecuredPartyOrganisationWithVerification" />
+  <xs:complexType name="UpdateSecuredPartyGroupResponseType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonResponseType">
+        <xs:sequence>
+          <xs:element name="PpsrTransactionId" type="xs:long" />
+          <xs:element name="SecuredPartyGroupNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UpdateSecuredPartyGroupResponseType" nillable="true" type="tns:UpdateSecuredPartyGroupResponseType" />
+  <xs:complexType name="ResetAccessCodeResponseType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonResponseType">
+        <xs:sequence>
+          <xs:element name="PpsrTransactionId" type="xs:long" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ResetAccessCodeResponseType" nillable="true" type="tns:ResetAccessCodeResponseType" />
+  <xs:complexType name="ChangeAccessCodeResponseType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonResponseType">
+        <xs:sequence>
+          <xs:element name="PpsrTransactionId" type="xs:long" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ChangeAccessCodeResponseType" nillable="true" type="tns:ChangeAccessCodeResponseType" />
+  <xs:complexType name="RetrieveSecuredPartyGroupHistoryResponseType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonResponseType">
+        <xs:sequence>
+          <xs:element name="PpsrTransactionId" type="xs:long" />
+          <xs:element name="SecuredPartyGroupHistory" nillable="true" type="tns:ArrayOfSecuredPartyGroupChange" />
+          <xs:element name="SecuredPartyGroupNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RetrieveSecuredPartyGroupHistoryResponseType" nillable="true" type="tns:RetrieveSecuredPartyGroupHistoryResponseType" />
+  <xs:complexType name="ArrayOfSecuredPartyGroupChange">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SecuredPartyGroupChange" nillable="true" type="tns:SecuredPartyGroupChange" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSecuredPartyGroupChange" nillable="true" type="tns:ArrayOfSecuredPartyGroupChange" />
+  <xs:complexType name="SecuredPartyGroupChange">
+    <xs:sequence>
+      <xs:element name="AddressForService" nillable="true" type="tns:AddressForService" />
+      <xs:element name="ChangePpsrTransactionId" type="xs:long" />
+      <xs:element name="ChangeTime" type="xs:dateTime" />
+      <xs:element name="SecuredParties" nillable="true" type="tns:ArrayOfSecuredParty" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SecuredPartyGroupChange" nillable="true" type="tns:SecuredPartyGroupChange" />
+  <xs:complexType name="ArrayOfSecuredParty">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SecuredParty" nillable="true" type="tns:SecuredParty" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSecuredParty" nillable="true" type="tns:ArrayOfSecuredParty" />
+  <xs:complexType name="SecuredParty">
+    <xs:sequence>
+      <xs:element name="ContactName" nillable="true" type="xs:string" />
+      <xs:element name="ContactPhone" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Individual" nillable="true" type="tns:SecuredPartyIndividual" />
+      <xs:element name="MailingAddress" nillable="true" type="tns:Address" />
+      <xs:element minOccurs="0" name="Organisation" nillable="true" type="tns:SecuredPartyOrganisation" />
+      <xs:element name="SecuredPartyType" type="tns:SecuredPartyType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SecuredParty" nillable="true" type="tns:SecuredParty" />
+  <xs:complexType name="SearchBySerialNumberResponseType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonResponseType">
+        <xs:sequence>
+          <xs:element name="PpsrTransactionId" type="xs:long" />
+          <xs:element name="SearchCriteria" nillable="true" type="tns:SearchBySerialNumberSearchCriteria" />
+          <xs:element name="SearchResult" nillable="true" type="tns:SearchBySerialNumberSearchResult" />
+          <xs:element name="SearchSummary" nillable="true" type="tns:SearchSummary" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SearchBySerialNumberResponseType" nillable="true" type="tns:SearchBySerialNumberResponseType" />
+  <xs:complexType name="SearchBySerialNumberSearchResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="NevdisData" nillable="true" type="tns:NevdisData" />
+      <xs:element minOccurs="0" name="ResultDetails" nillable="true" type="tns:ArrayOfResultDetail" />
+      <xs:element name="SearchResultRetrievedDateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TransitionalPeriodMessage" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SearchBySerialNumberSearchResult" nillable="true" type="tns:SearchBySerialNumberSearchResult" />
+  <xs:complexType name="NevdisData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="NevdisVehicles" nillable="true" type="tns:ArrayOfNevdisVehicle" />
+      <xs:element name="VerificationStatus" type="tns:IdentifierVerificationStatusType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NevdisData" nillable="true" type="tns:NevdisData" />
+  <xs:complexType name="ArrayOfNevdisVehicle">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="NevdisVehicle" nillable="true" type="tns:NevdisVehicle" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfNevdisVehicle" nillable="true" type="tns:ArrayOfNevdisVehicle" />
+  <xs:complexType name="NevdisVehicle">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="StolenDetails" nillable="true" type="tns:ArrayOfStolenDetail" />
+      <xs:element name="VehicleDetail" nillable="true" type="tns:NevdisVehicleDetail" />
+      <xs:element name="VehicleIdentifier" nillable="true" type="tns:NevdisVehicleIdentifier" />
+      <xs:element minOccurs="0" name="WrittenOffDetails" nillable="true" type="tns:ArrayOfWrittenOffDetail" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NevdisVehicle" nillable="true" type="tns:NevdisVehicle" />
+  <xs:complexType name="ArrayOfStolenDetail">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="StolenDetail" nillable="true" type="tns:StolenDetail" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfStolenDetail" nillable="true" type="tns:ArrayOfStolenDetail" />
+  <xs:complexType name="StolenDetail">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="StolenSummary" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="StolenDetail" nillable="true" type="tns:StolenDetail" />
+  <xs:complexType name="NevdisVehicleDetail">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Jurisdiction" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="JurisdictionParticipation" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Registration" nillable="true" type="tns:NevdisRegistration" />
+      <xs:element minOccurs="0" name="VehicleDescription" nillable="true" type="tns:NevdisVehicleDescription" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NevdisVehicleDetail" nillable="true" type="tns:NevdisVehicleDetail" />
+  <xs:complexType name="NevdisRegistration">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ExpiryDate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PlateNumber" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NevdisRegistration" nillable="true" type="tns:NevdisRegistration" />
+  <xs:complexType name="NevdisVehicleDescription">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BodyType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Colour" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ComplianceYearMonth" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EngineNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Make" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ManufactureYear" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Model" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VehicleType" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NevdisVehicleDescription" nillable="true" type="tns:NevdisVehicleDescription" />
+  <xs:complexType name="NevdisVehicleIdentifier">
+    <xs:sequence>
+      <xs:element name="IdentifierType" type="tns:NevdisVehicleIdentifierType" />
+      <xs:element name="IdentifierValue" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NevdisVehicleIdentifier" nillable="true" type="tns:NevdisVehicleIdentifier" />
+  <xs:simpleType name="NevdisVehicleIdentifierType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unsupported" />
+      <xs:enumeration value="VIN" />
+      <xs:enumeration value="ChassisNumber" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="NevdisVehicleIdentifierType" nillable="true" type="tns:NevdisVehicleIdentifierType" />
+  <xs:complexType name="ArrayOfWrittenOffDetail">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="WrittenOffDetail" nillable="true" type="tns:WrittenOffDetail" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfWrittenOffDetail" nillable="true" type="tns:ArrayOfWrittenOffDetail" />
+  <xs:complexType name="WrittenOffDetail">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="WrittenOffSummary" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="WrittenOffDetail" nillable="true" type="tns:WrittenOffDetail" />
+  <xs:complexType name="ArrayOfResultDetail">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ResultDetail" nillable="true" type="tns:ResultDetail" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfResultDetail" nillable="true" type="tns:ArrayOfResultDetail" />
+  <xs:complexType name="SearchByGrantorAndEventDateRangeResponseType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonResponseType">
+        <xs:sequence>
+          <xs:element name="PpsrTransactionId" type="xs:long" />
+          <xs:element name="SearchCriteria" nillable="true" type="tns:SearchByGrantorAndEventDateRangeSearchCriteria" />
+          <xs:element name="SearchResult" nillable="true" type="tns:SearchByGrantorSearchResult" />
+          <xs:element name="SearchSummary" nillable="true" type="tns:SearchSummary" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SearchByGrantorAndEventDateRangeResponseType" nillable="true" type="tns:SearchByGrantorAndEventDateRangeResponseType" />
+  <xs:complexType name="OrdinalSearchResponseType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonResponseType">
+        <xs:sequence>
+          <xs:element name="PpsrTransactionId" type="xs:long" />
+          <xs:element name="SearchCriteria" nillable="true" type="tns:OrdinalSearchSearchCriteria" />
+          <xs:element name="SearchResult" nillable="true" type="tns:OrdinalSearchSearchResult" />
+          <xs:element name="SearchSummary" nillable="true" type="tns:SearchSummary" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="OrdinalSearchResponseType" nillable="true" type="tns:OrdinalSearchResponseType" />
+  <xs:complexType name="OrdinalSearchSearchResult">
+    <xs:sequence>
+      <xs:element name="SearchResultDetail" nillable="true" type="tns:OrdinalSearchSearchResultDetail" />
+      <xs:element name="SearchResultRetrievedDateTime" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OrdinalSearchSearchResult" nillable="true" type="tns:OrdinalSearchSearchResult" />
+  <xs:complexType name="OrdinalSearchSearchResultDetail">
+    <xs:sequence>
+      <xs:element name="OrdinalSearchResult" type="tns:OrdinalSearchResultType" />
+      <xs:element name="RegistrationOne" nillable="true" type="tns:OrdinalRegistrationDetail" />
+      <xs:element name="RegistrationTwo" nillable="true" type="tns:OrdinalRegistrationDetail" />
+      <xs:element minOccurs="0" name="TransitionalMessage" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OrdinalSearchSearchResultDetail" nillable="true" type="tns:OrdinalSearchSearchResultDetail" />
+  <xs:simpleType name="OrdinalSearchResultType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unsupported" />
+      <xs:enumeration value="RegistrationEventOneBeforeTwo" />
+      <xs:enumeration value="RegistrationEventOneAfterTwo" />
+      <xs:enumeration value="RegistrationEventOneSameAsTwo" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="OrdinalSearchResultType" nillable="true" type="tns:OrdinalSearchResultType" />
+  <xs:complexType name="OrdinalRegistrationDetail">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EventTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IsAccessRestricted" nillable="true" type="xs:boolean" />
+      <xs:element name="IsArchived" type="xs:boolean" />
+      <xs:element name="IsRemoved" type="xs:boolean" />
+      <xs:element name="RegistrationEvent" nillable="true" type="tns:RegistrationEvent" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OrdinalRegistrationDetail" nillable="true" type="tns:OrdinalRegistrationDetail" />
+  <xs:complexType name="RetrieveSearchResultResponseType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonResponseType">
+        <xs:sequence>
+          <xs:element name="PpsrTransactionId" type="xs:long" />
+          <xs:element name="SearchCriteria" nillable="true" type="tns:SearchCriteria" />
+          <xs:element name="SearchResult" nillable="true" type="tns:SearchResult" />
+          <xs:element name="SearchSummary" nillable="true" type="tns:SearchSummary" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RetrieveSearchResultResponseType" nillable="true" type="tns:RetrieveSearchResultResponseType" />
+  <xs:complexType name="SearchCriteria">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="OrdinalSearchSearchCriteria" nillable="true" type="tns:OrdinalSearchSearchCriteria" />
+      <xs:element minOccurs="0" name="SearchByGrantorAndEventDateRangeSearchCriteria" nillable="true" type="tns:SearchByGrantorAndEventDateRangeSearchCriteria" />
+      <xs:element minOccurs="0" name="SearchByGrantorSearchCriteria" nillable="true" type="tns:SearchByGrantorSearchCriteria" />
+      <xs:element minOccurs="0" name="SearchByRegistrationNumberSearchCriteria" nillable="true" type="tns:SearchByRegistrationNumberSearchCriteria" />
+      <xs:element minOccurs="0" name="SearchBySerialNumberSearchCriteria" nillable="true" type="tns:SearchBySerialNumberSearchCriteria" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SearchCriteria" nillable="true" type="tns:SearchCriteria" />
+  <xs:complexType name="SearchResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="OrdinalSearchSearchResult" nillable="true" type="tns:OrdinalSearchSearchResult" />
+      <xs:element minOccurs="0" name="SearchByGrantorAndEventDateRangeSearchResult" nillable="true" type="tns:SearchByGrantorSearchResult" />
+      <xs:element minOccurs="0" name="SearchByGrantorSearchResult" nillable="true" type="tns:SearchByGrantorSearchResult" />
+      <xs:element minOccurs="0" name="SearchByRegistrationNumberSearchResult" nillable="true" type="tns:SearchByRegistrationNumberSearchResult" />
+      <xs:element minOccurs="0" name="SearchBySerialNumberSearchResult" nillable="true" type="tns:SearchBySerialNumberSearchResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SearchResult" nillable="true" type="tns:SearchResult" />
+  <xs:complexType name="RetrieveGrantorSearchResultDetailResponseType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonResponseType">
+        <xs:sequence>
+          <xs:element name="ResultCount" type="xs:int" />
+          <xs:element minOccurs="0" name="ResultDetails" nillable="true" type="tns:ArrayOfResultDetail" />
+          <xs:element name="SearchResultDetailRetrievedDateTime" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RetrieveGrantorSearchResultDetailResponseType" nillable="true" type="tns:RetrieveGrantorSearchResultDetailResponseType" />
+  <xs:complexType name="FilterGrantorSearchResultResponseType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonResponseType">
+        <xs:sequence>
+          <xs:element name="FilterCriteria" nillable="true" type="tns:SearchByGrantorFilterCriteria" />
+          <xs:element name="FilterSummary" nillable="true" type="tns:FilterSummary" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="FilterGrantorSearchResultResponseType" nillable="true" type="tns:FilterGrantorSearchResultResponseType" />
+  <xs:complexType name="FilterSummary">
+    <xs:sequence>
+      <xs:element name="FilterExecutedDateTime" type="xs:dateTime" />
+      <xs:element name="FilterNumber" type="xs:int" />
+      <xs:element name="ResultCount" type="xs:int" />
+      <xs:element name="SearchNumber" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FilterSummary" nillable="true" type="tns:FilterSummary" />
+  <xs:complexType name="FilterGrantorAndEventDateRangeSearchResultResponseType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonResponseType">
+        <xs:sequence>
+          <xs:element name="FilterCriteria" nillable="true" type="tns:SearchByGrantorAndEventDateRangeFilterCriteria" />
+          <xs:element name="FilterSummary" nillable="true" type="tns:FilterSummary" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="FilterGrantorAndEventDateRangeSearchResultResponseType" nillable="true" type="tns:FilterGrantorAndEventDateRangeSearchResultResponseType" />
+  <xs:complexType name="RetrieveRegistrationHistoryDetailResponseType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonResponseType">
+        <xs:sequence>
+          <xs:element name="ResultDetail" nillable="true" type="tns:ResultDetail" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RetrieveRegistrationHistoryDetailResponseType" nillable="true" type="tns:RetrieveRegistrationHistoryDetailResponseType" />
+  <xs:complexType name="RequestSearchCertificateResponseType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonResponseType">
+        <xs:sequence>
+          <xs:element name="AccessToSearchCertificateExpiryTime" type="xs:dateTime" />
+          <xs:element name="PpsrTransactionId" type="xs:long" />
+          <xs:element name="SearchCertificateNumber" nillable="true" type="xs:string" />
+          <xs:element name="SearchCertificateRequestedDateTime" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RequestSearchCertificateResponseType" nillable="true" type="tns:RequestSearchCertificateResponseType" />
+  <xs:complexType name="RetrieveSearchCertificateResponseType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonResponseType">
+        <xs:sequence>
+          <xs:element name="AccessToSearchCertificateExpiryTime" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Attachments" nillable="true" type="tns:ArrayOfAttachmentDetail" />
+          <xs:element name="PpsrTransactionId" type="xs:long" />
+          <xs:element minOccurs="0" name="SearchCertificateCreatedDateTime" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="SearchCertificateFile" nillable="true" type="xs:base64Binary" />
+          <xs:element minOccurs="0" name="SearchCertificateFileName" nillable="true" type="xs:string" />
+          <xs:element name="SearchCertificateNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RetrieveSearchCertificateResponseType" nillable="true" type="tns:RetrieveSearchCertificateResponseType" />
+  <xs:complexType name="RetrieveSearchCertificateRegistrationAttachmentResponseType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonResponseType">
+        <xs:sequence>
+          <xs:element name="Attachment" nillable="true" type="xs:base64Binary" />
+          <xs:element name="AttachmentFileName" nillable="true" type="xs:string" />
+          <xs:element name="PpsrTransactionId" type="xs:long" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RetrieveSearchCertificateRegistrationAttachmentResponseType" nillable="true" type="tns:RetrieveSearchCertificateRegistrationAttachmentResponseType" />
+  <xs:complexType name="RetrieveMessagesResponseType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonResponseType">
+        <xs:sequence>
+          <xs:element name="MailboxMessages" nillable="true" type="tns:ArrayOfB2GMailboxMessage" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RetrieveMessagesResponseType" nillable="true" type="tns:RetrieveMessagesResponseType" />
+  <xs:complexType name="ArrayOfB2GMailboxMessage">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="B2GMailboxMessage" nillable="true" type="tns:B2GMailboxMessage" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfB2GMailboxMessage" nillable="true" type="tns:ArrayOfB2GMailboxMessage" />
+  <xs:complexType name="B2GMailboxMessage">
+    <xs:sequence>
+      <xs:element name="B2GMailboxMessageId" type="xs:long" />
+      <xs:element name="HasPdf" type="xs:boolean" />
+      <xs:element name="Message" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:any minOccurs="0" maxOccurs="unbounded" processContents="lax" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="MessageAddedDateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="MessageLastRetrievedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="NotificationType" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="B2GMailboxMessage" nillable="true" type="tns:B2GMailboxMessage" />
+  <xs:complexType name="RetrieveMessagePdfResponseType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonResponseType">
+        <xs:sequence>
+          <xs:element name="B2GMailboxPdfMessage" nillable="true" type="tns:B2GMailboxPdfMessage" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RetrieveMessagePdfResponseType" nillable="true" type="tns:RetrieveMessagePdfResponseType" />
+  <xs:complexType name="B2GMailboxPdfMessage">
+    <xs:sequence>
+      <xs:element name="B2GMailboxMessageId" type="xs:long" />
+      <xs:element name="MessagePdf" nillable="true" type="xs:base64Binary" />
+      <xs:element name="PdfFileName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="B2GMailboxPdfMessage" nillable="true" type="tns:B2GMailboxPdfMessage" />
+  <xs:complexType name="DeleteMessagesResponseType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonResponseType">
+        <xs:sequence>
+          <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" name="DeletedMessageIds" nillable="true" type="q2:ArrayOflong" />
+          <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" name="NotDeletedMessageIds" nillable="true" type="q3:ArrayOflong" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DeleteMessagesResponseType" nillable="true" type="tns:DeleteMessagesResponseType" />
+  <xs:complexType name="PingResponseType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonResponseType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Extension" nillable="true">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:any minOccurs="0" maxOccurs="unbounded" processContents="lax" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PingResponseType" nillable="true" type="tns:PingResponseType" />
+  <xs:complexType name="ChangeB2GPasswordResponseType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonResponseType">
+        <xs:sequence>
+          <xs:element name="PasswordExpiryDateTime" type="xs:dateTime" />
+          <xs:element name="PpsrTransactionId" type="xs:long" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ChangeB2GPasswordResponseType" nillable="true" type="tns:ChangeB2GPasswordResponseType" />
+  <xs:complexType name="RequestReportResponseType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonResponseType">
+        <xs:sequence>
+          <xs:element name="PpsrTransactionId" type="xs:long" />
+          <xs:element name="ReportNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RequestReportResponseType" nillable="true" type="tns:RequestReportResponseType" />
+  <xs:complexType name="RetrieveReportResponseType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonResponseType">
+        <xs:sequence>
+          <xs:element name="PpsrTransactionId" type="xs:long" />
+          <xs:element minOccurs="0" name="ReportExpiryDateTime" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="ReportFile" nillable="true" type="xs:base64Binary" />
+          <xs:element minOccurs="0" name="ReportFileName" nillable="true" type="xs:string" />
+          <xs:element name="ReportFormat" type="tns:ReportFormatType" />
+          <xs:element name="ReportNumber" nillable="true" type="xs:string" />
+          <xs:element name="ReportType" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RetrieveReportResponseType" nillable="true" type="tns:RetrieveReportResponseType" />
+  <xs:complexType name="RetrieveReportSummariesResponseType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CommonResponseType">
+        <xs:sequence>
+          <xs:element name="ReportSummaries" nillable="true" type="tns:ArrayOfReportSummary" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RetrieveReportSummariesResponseType" nillable="true" type="tns:RetrieveReportSummariesResponseType" />
+  <xs:complexType name="ArrayOfReportSummary">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ReportSummary" nillable="true" type="tns:ReportSummary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfReportSummary" nillable="true" type="tns:ArrayOfReportSummary" />
+  <xs:complexType name="ReportSummary">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PdfFilePageCount" nillable="true" type="xs:int" />
+      <xs:element name="ReportCriteria" nillable="true">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:any minOccurs="0" maxOccurs="unbounded" processContents="lax" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" name="ReportExpiryDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ReportFileName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReportFileSizeBytes" nillable="true" type="xs:int" />
+      <xs:element name="ReportFormat" type="tns:ReportFormatType" />
+      <xs:element name="ReportNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReportProducedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ReportRequestedB2GAccountCustomerLocation" nillable="true" type="xs:string" />
+      <xs:element name="ReportRequestedChannel" type="tns:ReportRequestedChannelType" />
+      <xs:element name="ReportRequestedDateTime" type="xs:dateTime" />
+      <xs:element name="ReportRequestedUsername" nillable="true" type="xs:string" />
+      <xs:element name="ReportStatus" type="tns:ReportStatusType" />
+      <xs:element name="ReportType" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReportSummary" nillable="true" type="tns:ReportSummary" />
+  <xs:simpleType name="ReportRequestedChannelType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unsupported" />
+      <xs:enumeration value="B2G" />
+      <xs:enumeration value="Web" />
+      <xs:enumeration value="ContactCentre" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ReportRequestedChannelType" nillable="true" type="tns:ReportRequestedChannelType" />
+  <xs:simpleType name="ReportStatusType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unsupported" />
+      <xs:enumeration value="ProcessingPending" />
+      <xs:enumeration value="ProcessingCompleted" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ReportStatusType" nillable="true" type="tns:ReportStatusType" />
+  <xs:complexType name="ArrayOfRegistrationInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RegistrationInfo" nillable="true" type="tns:RegistrationInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRegistrationInfo" nillable="true" type="tns:ArrayOfRegistrationInfo" />
+  <xs:complexType name="RegistrationInfo">
+    <xs:sequence>
+      <xs:element name="ChangeNumber" type="xs:long" />
+      <xs:element name="IsRegistrationEndTimeChanged" type="xs:boolean" />
+      <xs:element name="NewRegistrationSequenceNumber" type="xs:short" />
+      <xs:element name="PpsrTransactionId" type="xs:long" />
+      <xs:element minOccurs="0" name="RegistrationEndTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="RegistrationNumber" nillable="true" type="xs:string" />
+      <xs:element name="RegistrationStartTime" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RegistrationInfo" nillable="true" type="tns:RegistrationInfo" />
+  <xs:complexType name="IsLaxSupportedResponseType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="IsLaxSupportedResponseType" nillable="true" type="tns:IsLaxSupportedResponseType" />
+</xs:schema>
